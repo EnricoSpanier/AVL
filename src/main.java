@@ -1,13 +1,36 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.util.Scanner;
 
 public class main {
-	public static void main(String args[]){
-		int vetor[] = {1,3,5,7,9,11,13,25,50,39};
-		int aux;
-		AVLTree arvore = new AVLTree();
-		for(int i=0; i<10; i++) {
-			aux = vetor[i];
-			arvore.insert(aux);
-		}
-		arvore.preOrderTraversal();
-	}
+   public main() {
+   }
+
+   public static void main(String[] var0) {
+      new AVLTree();
+      Scanner var2 = new Scanner(System.in);
+      short var5 = 1;
+
+      while(var5 != 1350) {
+         System.out.println("1- inserir valor\n2- mostrar arvore\n5-sair\n");
+         int var4 = var2.nextInt();
+         switch (var4) {
+            case 1:
+               int var3 = var2.nextInt();
+               System.out.println("ok" + var3);
+               break;
+            case 2:
+               System.out.println("arvore");
+               break;
+            case 3:
+            case 4:
+            default:
+               System.out.println("erro");
+               break;
+            case 5:
+               var5 = 1350;
+               var2.close();
+         }
+      }
+
+   }
 }
