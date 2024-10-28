@@ -78,7 +78,7 @@ public class BTNode {
     public int getDegree() {
         int degree = 0;
         if (hasLeftChild()) {
-            ++degree;
+            --degree;
         }
         if (hasRightChild()) {
             ++degree;
