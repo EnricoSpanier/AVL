@@ -9,7 +9,7 @@ public class main {
 		int op;
 		int po2=1;		
 		while(po2!=1350){
-			System.out.println("1- inserir valor\n2- mostrar arvore\n3- remover valor\n4- apagar arvore\n5-sair\n");
+			System.out.println("1- inserir valor\n2- mostrar arvore\n3- remover valor\n4- apagar arvore\n-5 Print arvore 2D\n6-sair\n");
 			op = sc.nextInt();
 			switch(op){
 				case 1:
@@ -30,8 +30,12 @@ public class main {
 				case 4:
 					System.out.println("arvore apagada");
 					break;
-					
+
 				case 5:
+					System.out.println(arvore.inReversedOrderAscii());
+					break;
+					
+				case 6:
 					po2=1350;
 					sc.close();
 					break;
