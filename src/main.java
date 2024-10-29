@@ -15,20 +15,20 @@ public class main {
 				case 1:
 					aux = sc.nextInt();
 					arvore.insert(aux);
-					System.out.println("valor "+aux+" inserido");
+					System.out.println("\nvalor "+aux+" inserido\n");
 					break;
 				
 				case 2:
 					arvore.preOrderTraversal();
-					System.out.println("arvore");
 					break;
 
 				case 3:
-					System.out.println("apagada");
+				    aux = sc.nextInt();
+					arvore.remove(aux);
 					break;
 
 				case 4:
-					System.out.println("arvore apagada");
+					System.out.println("\n arvore apagada");
 					break;
 
 				case 5:
