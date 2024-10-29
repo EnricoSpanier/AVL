@@ -9,7 +9,7 @@ public class main {
 		int op;
 		int po2=1;		
 		while(po2!=1350){
-			System.out.println("1- inserir valor\n2- mostrar arvore\n3- remover valor\n4- apagar arvore\n5- Print arvore 2D\n6-sair\n");
+			System.out.println("1- inserir valor\n2- mostrar arvore\n3- remover valor\n4- apagar arvore\n5- Print arvore 2D\n6- sair\n");
 			op = sc.nextInt();
 			switch(op){
 				case 1:
