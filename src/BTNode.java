@@ -20,6 +20,14 @@ public class BTNode {
         this.right = null;
         this.height = 0;
     }
+    public void setNull(BTNode node){
+        this.data = null;
+        this.parent = null;
+        this.left = null;
+        this.right = null;
+        this.height = 0;
+        
+    }
 
     public int getData() {
         return data;
