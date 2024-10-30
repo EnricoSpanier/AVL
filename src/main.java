@@ -28,7 +28,7 @@ public class main {
 					break;
 
 				case 4:
-					avRemove(arvore.root);
+					arvore.avRemove();
 					System.out.println("\n arvore apagada");
 					break;
 
