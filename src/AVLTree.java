@@ -52,6 +52,12 @@ public class AVLTree extends BinaryTree {
         return balance(node);
     }
 
+    public void avRemove(BTNode node){
+        avRemove(node.getLeft());
+        avRemove(node.getRight());
+        node.setNull();
+    }
+
     public void remove(int data) {
         root = remove(root,data);
         // Verificação após a remoção
