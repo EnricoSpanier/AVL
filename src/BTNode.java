@@ -20,7 +20,7 @@ public class BTNode {
         this.right = null;
         this.height = 0;
     }
-    public void setNull(BTNode node){
+    public void setNull(){
         this.data = null;
         this.parent = null;
         this.left = null;
