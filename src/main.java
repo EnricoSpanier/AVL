@@ -1,13 +1,55 @@
+import java.util.Scanner;
 
 public class main {
 	public static void main(String args[]){
-		int vetor[] = {1,3,5,7,9,11,13,25,50,39};
-		int aux;
 		AVLTree arvore = new AVLTree();
-		for(int i=0; i<10; i++) {
-			aux = vetor[i];
-			arvore.insert(aux);
+
+		Scanner sc = new Scanner(System.in);
+
+		int aux;
+		int op;
+		int po2=1;		
+		while(po2!=1350){
+			System.out.println("\n1- inserir valor\n2- mostrar arvore\n3- remover valor\n4- apagar arvore\n5- Print arvore 2D\n6- sair\n");
+			op = sc.nextInt();
+			switch(op){
+				case 1:
+				    System.out.println("Insira o valor a ser inserido na arvore\n");
+					aux = sc.nextInt();
+					arvore.insert(aux);
+					System.out.println("\nvalor "+aux+" inserido");
+					break;
+				
+				case 2:
+					arvore.preOrderTraversal();
+					break;
+
+				case 3:
+				    aux = sc.nextInt();
+					arvore.remove(aux);
+					break;
+
+				case 4:
+					arvore.avRemove();
+					System.out.println("\n arvore apagada\n");
+					break;
+
+				case 5:
+					System.out.println(arvore.inReversedOrderAscii());
+					break;
+					
+				case 6:
+					po2=1350;
+					arvore.avRemove();
+					sc.close();
+					break;
+					
+				default:
+				    System.out.println("erro");
+
+			}
+
 		}
-		arvore.preOrderTraversal();
+		
 	}
 }

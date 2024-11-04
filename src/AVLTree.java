@@ -51,21 +51,44 @@ public class AVLTree extends BinaryTree {
         updateHeight(node);
         return balance(node);
     }
+    public void avRemove(){
+        avRemoveAux(root);
+        root = null;
+    }
+        
+        
+
+    public void avRemoveAux(BTNode node){
+        if(node.getLeft() != null){
+        avRemoveAux(node.getLeft());
+        }
+        if(node.getRight() != null){
+        avRemoveAux(node.getRight());
+        }
+        //BTNode replica = new BTNode();
+        node.setData(0);
+        node.setRight(null);
+        node.setLeft(null);
+        node.setParent(null);
+    }
 
     public void remove(int data) {
-        root = remove(root, data);
+        root = remove(root,data);
         // Verificação após a remoção
         if (root != null && root.getParent() != null) {
             root = root.getParent();
         }
-        if (root != null) {
-            root.setParent(null); // Garantir que o parent do root seja null
+        if (root!= null){
+            root.setParent(null);
+            System.out.println("\nvalor "+data+" removido \n");// Garantir que o parent do root seja null
         }
+        
     }
 
-    private BTNode remove(BTNode node, int data) {
+    private BTNode remove(BTNode node,int data) {
         if (node == null) {
-            throw new RuntimeException("Nó com chave " + data + " não existe na AVL!");
+            System.out.println("\nNó com valor " + data + " não existe na AVL!\n");
+            return null;
         }
         int diff = Integer.compare(data, node.getData());
         if (diff < 0) {

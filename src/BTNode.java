@@ -21,6 +21,7 @@ public class BTNode {
         this.height = 0;
     }
 
+
     public int getData() {
         return data;
     }
@@ -78,7 +79,7 @@ public class BTNode {
     public int getDegree() {
         int degree = 0;
         if (hasLeftChild()) {
-            ++degree;
+            --degree;
         }
         if (hasRightChild()) {
             ++degree;
