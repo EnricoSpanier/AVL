@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 public class main {
 	public static void main(String args[]){
 		AVLTree arvore = new AVLTree();
@@ -13,9 +14,10 @@ public class main {
 			op = sc.nextInt();
 			switch(op){
 				case 1:
+				    System.out.println("Insira o valor a ser inserido na arvore\n");
 					aux = sc.nextInt();
 					arvore.insert(aux);
-					System.out.println("\nvalor "+aux+" inserido\n");
+					System.out.println("\nvalor "+aux+" inserido");
 					break;
 				
 				case 2:
@@ -38,6 +40,7 @@ public class main {
 					
 				case 6:
 					po2=1350;
+					arvore.avRemove();
 					sc.close();
 					break;
 					
