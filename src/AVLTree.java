@@ -46,11 +46,12 @@ public class AVLTree extends BinaryTree {
         } else if (diff > 0) {
             node.setRight(insert(node.getRight(), node, data));
         } else {
-            throw new RuntimeException("Essa AVL não pode ter duplicatas!");
+            node.setRep(1);
         }
         updateHeight(node);
         return balance(node);
     }
+    
     public void avRemove(){
         avRemoveAux(root);
         root = null;
@@ -72,7 +73,10 @@ public class AVLTree extends BinaryTree {
         node.setParent(null);
     }
 
-    public void remove(int data) {
+    public void removea(int data) {
+        if(search(root,data)!= null){
+            System.out.println("\nValor "+ data +" foi removido!\n");
+        }
         root = remove(root,data);
         // Verificação após a remoção
         if (root != null && root.getParent() != null) {
@@ -80,32 +84,35 @@ public class AVLTree extends BinaryTree {
         }
         if (root!= null){
             root.setParent(null);
-            System.out.println("\nvalor "+data+" removido \n");// Garantir que o parent do root seja null
         }
         
     }
 
-    private BTNode remove(BTNode node,int data) {
+    private BTNode removea(BTNode node,int data) {
         if (node == null) {
-            System.out.println("\nNó com valor " + data + " não existe na AVL!\n");
+            System.out.println("\nNó com valor " + data + " não existe na BinaryTree!\n");
             return null;
         }
-        int diff = Integer.compare(data, node.getData());
-        if (diff < 0) {
-            node.setLeft(remove(node.getLeft(), data));
-        } else if (diff > 0) {
-            node.setRight(remove(node.getRight(), data));
-        } else {
-            if (node.isLeaf()) {
-                return null;
-            } else if (!node.hasLeftChild()) {
-                return node.getRight();
-            } else if (!node.hasRightChild()) {
-                return node.getLeft();
+        if(node.getData()==data && node.getRep()!=0){
+            node.setRep(-1);
+        }else{
+            int diff = Integer.compare(data, node.getData());
+            if (diff < 0) {
+                node.setLeft(removea(node.getLeft(), data));
+            } else if (diff > 0) {
+                node.setRight(removea(node.getRight(), data));
             } else {
-                BTNode predecessor = findMax(node.getLeft());
-                node.setData(predecessor.getData());
-                node.setLeft(remove(node.getLeft(), predecessor.getData()));
+                if (node.isLeaf()) {
+                    return null;
+                } else if (!node.hasLeftChild()) {
+                    return node.getRight();
+                } else if (!node.hasRightChild()) {
+                    return node.getLeft();
+                } else {
+                    BTNode predecessor = findMax(node.getLeft());
+                    node.setData(predecessor.getData());
+                    node.setLeft(removea(node.getLeft(), predecessor.getData()));
+                }
             }
         }
         updateHeight(node);
