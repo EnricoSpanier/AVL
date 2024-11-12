@@ -47,6 +47,129 @@ public class BinaryTree {
 
 		return root.getHeight();
 	}
+	
+	public BTNode search(int data) {
+        return search(root, data);
+    }
+
+    private BTNode search(BTNode node, int data) {
+        if (node == null) {
+            return null;
+        }
+        int diff = Integer.compare(data, node.getData());
+        if (diff < 0) {
+            return search(node.getLeft(), data);
+        } else if (diff > 0) {
+            return search(node.getRight(), data);
+        } else {
+            return node;
+        }
+    }
+	
+	public void insert(int data) {
+        root = insert(root, null, data);
+        // Verificação após a inserção
+        if (root.getParent() != null) {
+            root = root.getParent();
+        }
+        root.setParent(null); // Garantir que o parent do root seja null
+    }
+
+    private BTNode insert(BTNode node, BTNode parent, int data) {
+        if (node == null) {
+            return new BTNode(data, parent);
+        }
+        int diff = Integer.compare(data, node.getData());
+        if (diff < 0) {
+            node.setLeft(insert(node.getLeft(), node, data));
+        } else if (diff >= 0) {
+            node.setRight(insert(node.getRight(), node, data));
+        }
+        return node;
+    }
+    
+    public void remove(int data) {
+        if(search(root,data)!= null){
+            System.out.println("\nValor "+ data +" foi removido!\n");
+        }
+        root = remove(root,data);
+        // Verificação após a remoção
+        if (root != null && root.getParent() != null) {
+            root = root.getParent();
+        }
+        if (root!= null){
+            root.setParent(null);
+        }
+        
+    }
+	
+	public BTNode remove(BTNode node, int data){
+	    if(node == null){
+	        return node;
+	    }
+	    if(data>node.getData()){
+	        root.setRight(remove(root.getRight(),data));
+	    }
+	    else if(data<node.getData()){
+	        root.setLeft(remove(root.getLeft(),data));    
+	    }
+	    else{
+	        if(node.isLeaf()){
+	            if(node.getParent().getLeft().getData()==data){
+	                node.getParent().setLeft(null);
+	            }else{
+	                node.getParent().setRight(null);
+	            }
+	        }
+	        else if(node.getRight()!=null){
+	            node.setData(maior(node));
+	            node.setRight(remove(node.getRight(),node.getData()));
+	        }else{
+	            node.setData(menor(node));
+	            node.setLeft(remove(node.getLeft(),node.getData()));
+	        }
+	    }
+	    return node;
+	}
+	
+	public int maior(BTNode node){
+	    root = root.getRight();
+	    while(root.getLeft()!=null){
+	        root = root.getLeft();
+	    }
+	    return root.getData();
+	}
+	public int menor(BTNode node){
+	    root = root.getLeft();
+	    while(root.getRight()!= null){
+	        root = root.getRight();
+	    }
+	    return root.getData();
+	}
+	
+	
+	public void avRemove(){
+        avRemoveAux(root);
+        root = null;
+    }
+        
+        
+
+    public void avRemoveAux(BTNode node){
+        if(node.getLeft() != null){
+        avRemoveAux(node.getLeft());
+        }
+        if(node.getRight() != null){
+        avRemoveAux(node.getRight());
+        }
+        node.setData(0);
+        node.setRight(null);
+        node.setLeft(null);
+        node.setParent(null);
+    }
+
+    
+	
 
 	public String inOrderTraversal() {
 		StringBuilder sb = new StringBuilder();
