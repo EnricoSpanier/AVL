@@ -4,6 +4,7 @@ public class BTNode {
     protected BTNode left;
     protected BTNode right;
     protected int height;
+    protected int rep;
 
     public BTNode() {
         this(0, null);
@@ -19,6 +20,7 @@ public class BTNode {
         this.left = null;
         this.right = null;
         this.height = 0;
+        this.rep = 0;
     }
 
 
@@ -103,6 +105,14 @@ public class BTNode {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+    
+    public int getRep() {
+        return rep;
+    }
+
+    public void setRep(int val) {
+        this.rep = rep+val ;
     }
 
     @Override
