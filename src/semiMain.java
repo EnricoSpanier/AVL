@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-public class semiMain {
+public class Main {
     public static void main(String[] args) {
        BinaryTree BTree = new BinaryTree();
        AVLTree AVL = new AVLTree();
@@ -13,8 +13,8 @@ public class semiMain {
        BTNode avlTreeRoot = AVL.getRoot();
        
        // Exemplo de uso das árvores 
-       //BTree.preOrderTraversal()
-       //System.out.println("Raiz da Árvore Binária: " + );
+       //BTree.preOrderTraversal();
+       System.out.println("Raiz da Árvore Binária: \n" + AVL.inOrderTraversal());
        //System.out.println("Raiz da Árvore AVL: " + avlTreeRoot);
     }
 }
