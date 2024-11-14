@@ -221,6 +221,7 @@ public class BTNode {
                 "\nisLeaf(): " + isLeaf() +
                 "\ngetDegree(): " + getDegree() +
                 "\ngetLevel(): " + getLevel() +
-                "\ngetHeight(): " + getHeight();
+                "\ngetHeight(): " + getHeight() +
+                "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
     }
 }
