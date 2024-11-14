@@ -17,7 +17,7 @@ public class AVLTree extends BinaryTree {
         if (node == null) {
             return null;
         }
-        int diff = data.compareTo(node.getEndereco);
+        int diff = data.compareTo(node.getEndereco());
         if (diff < 0) {
             return search(node.getLeft(), data);
         } else if (diff > 0) {
@@ -40,7 +40,7 @@ public class AVLTree extends BinaryTree {
         if (node == null) {
             return new BTNode(data, parent);
         }
-        int diff = data.compareTo(node.getEndereco);
+        int diff = data.compareTo(node.getEndereco());
         if (diff < 0) {
             node.setLeft(insert(node.getLeft(), node, data));
         } else if (diff > 0) {
@@ -69,7 +69,7 @@ public class AVLTree extends BinaryTree {
         //BTNode replica = new BTNode();
         node.setEndereco("");
         node.setEI("");
-        node.setCR("");
+        node.setCE("");
         node.setSR("");
         node.setAI("");
         node.setAF("");
@@ -105,7 +105,7 @@ public class AVLTree extends BinaryTree {
         if(node.getEndereco()==data && node.getRep()!=0){
             node.setRep(-1);
         }else{
-            int diff = data.compareTo(node.getEndereco);
+            int diff = data.compareTo(node.getEndereco());
             if (diff < 0) {
                 node.setLeft(removea(node.getLeft(), data));
             } else if (diff > 0) {
@@ -119,7 +119,7 @@ public class AVLTree extends BinaryTree {
                     return node.getLeft();
                 } else {
                     BTNode predecessor = findMax(node.getLeft());
-                    node.setData(predecessor.getEndereco());
+                    node.setEndereco(predecessor.getEndereco());
                     node.setLeft(removea(node.getLeft(), predecessor.getEndereco()));
                 }
             }
