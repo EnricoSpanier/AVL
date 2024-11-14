@@ -48,15 +48,15 @@ public class BinaryTree {
 		return root.getHeight();
 	}
 	
-	public BTNode search(int data) {
+	public BTNode search(String data) {
         return search(root, data);
     }
 
-    private BTNode search(BTNode node, int data) {
+    private BTNode search(BTNode node, String data) {
         if (node == null) {
             return null;
         }
-        int diff = Integer.compare(data, node.getData());
+        int diff = data.compareTo(node.getEndereco);
         if (diff < 0) {
             return search(node.getLeft(), data);
         } else if (diff > 0) {
@@ -66,7 +66,7 @@ public class BinaryTree {
         }
     }
 	
-	public void insert(int data) {
+	public void insert(String data) {
         root = insert(root, null, data);
         // Verificação após a inserção
         if (root.getParent() != null) {
@@ -75,11 +75,11 @@ public class BinaryTree {
         root.setParent(null); // Garantir que o parent do root seja null
     }
 
-    private BTNode insert(BTNode node, BTNode parent, int data) {
+    private BTNode insert(BTNode node, BTNode parent, String data) {
         if (node == null) {
             return new BTNode(data, parent);
         }
-        int diff = Integer.compare(data, node.getData());
+        int diff = data.compareTo(node.getEndereco);
         if (diff < 0) {
             node.setLeft(insert(node.getLeft(), node, data));
         } else if (diff >= 0) {
@@ -88,7 +88,7 @@ public class BinaryTree {
         return node;
     }
     
-    public void remove(int data) {
+    public void remove(String data) {
         if(search(root,data)!= null){
             System.out.println("\nValor "+ data +" foi removido!\n");
         }
@@ -103,48 +103,49 @@ public class BinaryTree {
         
     }
 	
-	public BTNode remove(BTNode node, int data){
+	public BTNode remove(BTNode node,String data){
 	    if(node == null){
 	        return node;
 	    }
-	    if(data>node.getData()){
+	    int diff = data.compareTo(node.getEndereco)
+	    if(diff > 0){
 	        root.setRight(remove(root.getRight(),data));
 	    }
-	    else if(data<node.getData()){
+	    else if(diff < 0){
 	        root.setLeft(remove(root.getLeft(),data));    
 	    }
 	    else{
 	        if(node.isLeaf()){
-	            if(node.getParent().getLeft().getData()==data){
+	            if(node.getParent().getLeft().getEndereco()==data){
 	                node.getParent().setLeft(null);
 	            }else{
 	                node.getParent().setRight(null);
 	            }
 	        }
 	        else if(node.getRight()!=null){
-	            node.setData(maior(node));
-	            node.setRight(remove(node.getRight(),node.getData()));
+	            node.setEndereco(maior(node));
+	            node.setRight(remove(node.getRight(),node.Endereco()));
 	        }else{
-	            node.setData(menor(node));
-	            node.setLeft(remove(node.getLeft(),node.getData()));
+	            node.setEndereco(menor(node));
+	            node.setLeft(remove(node.getLeft(),node.getEndereco()));
 	        }
 	    }
 	    return node;
 	}
 	
-	public int maior(BTNode node){
+	public String maior(BTNode node){
 	    root = root.getRight();
 	    while(root.getLeft()!=null){
 	        root = root.getLeft();
 	    }
-	    return root.getData();
+	    return root.getEndereco();
 	}
-	public int menor(BTNode node){
+	public String menor(BTNode node){
 	    root = root.getLeft();
 	    while(root.getRight()!= null){
 	        root = root.getRight();
 	    }
-	    return root.getData();
+	    return root.getEndereco();
 	}
 	
 	
@@ -162,7 +163,16 @@ public class BinaryTree {
         if(node.getRight() != null){
         avRemoveAux(node.getRight());
         }
-        node.setData(0);
+        node.setEndereco("");
+        node.setEI("");
+        node.setCR("");
+        node.setSR("");
+        node.setAI("");
+        node.setAF("");
+        node.setEM("");
+        node.setEJAFAI("");
+        node.setEJAFAF("");
+        node.setEJAEM("");
         node.setRight(null);
         node.setLeft(null);
         node.setParent(null);
@@ -199,12 +209,12 @@ public class BinaryTree {
 		}
 		// Pré-ordem = percurso NLR.
 		System.out.println(
-			    "BinaryTree - " + node.getData() +
+			    "BinaryTree - " + node.getEndereco() +
 			    ", getDegree(): " + node.getDegree() +
 			    ", getHeight(): " + node.getHeight() +
-			    ", parent => {" + (node.getParent() != null ? node.getParent().getData() : "null") + "}" +
-			    ", right => {" + (node.getRight() != null ? node.getRight().getData() : "null") + "}" +
-			    ", left => {" + (node.getLeft() != null ? node.getLeft().getData() : "null") + "}"
+			    ", parent => {" + (node.getParent() != null ? node.getParent().getEndereco() : "null") + "}" +
+			    ", right => {" + (node.getRight() != null ? node.getRight().getEndereco() : "null") + "}" +
+			    ", left => {" + (node.getLeft() != null ? node.getLeft().getEndereco() : "null") + "}"
 			);
 		//System.out.println(node.getData()+" ");
 		preOrderTraversalhelper(node.getLeft());
