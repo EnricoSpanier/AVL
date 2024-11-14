@@ -27,8 +27,8 @@ public class AVLTree extends BinaryTree {
         }
     }
 
-    public void insert(String data) {
-        root = insert(root, null, data);
+    public void insert(String data, BTNode dados) {
+        root = insert(root, null, data,dados);
         // Verificação após a inserção
         if (root.getParent() != null) {
             root = root.getParent();
@@ -36,15 +36,16 @@ public class AVLTree extends BinaryTree {
         root.setParent(null); // Garantir que o parent do root seja null
     }
 
-    private BTNode insert(BTNode node, BTNode parent, String data) {
+    private BTNode insert(BTNode node, BTNode parent, String data, BTNode dados) {
         if (node == null) {
-            return new BTNode(data, parent);
+            dados.setParent(parent);
+            return dados;
         }
         int diff = data.compareTo(node.getEndereco());
         if (diff < 0) {
-            node.setLeft(insert(node.getLeft(), node, data));
+            node.setLeft(insert(node.getLeft(), node, data,dados));
         } else if (diff > 0) {
-            node.setRight(insert(node.getRight(), node, data));
+            node.setRight(insert(node.getRight(), node, data,dados));
         } else {
             node.setRep(1);
         }
