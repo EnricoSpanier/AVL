@@ -50,14 +50,6 @@ public class ReadCSV {
                 } else {
                     insertNode(rootNode, node);
                 }
-
-                System.out.println(node.toString());
-                //System.out.println("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-
-                if (i == 20) {
-                    break;
-                }
-                i += 1;
             }
         } catch (IOException e) {
             e.printStackTrace();
