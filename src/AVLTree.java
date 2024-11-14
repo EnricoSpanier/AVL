@@ -9,15 +9,15 @@ public class AVLTree extends BinaryTree {
         super(root);
     }
 
-    public BTNode search(int data) {
+    public BTNode search(String data) {
         return search(root, data);
     }
 
-    private BTNode search(BTNode node, int data) {
+    private BTNode search(BTNode node, String data) {
         if (node == null) {
             return null;
         }
-        int diff = Integer.compare(data, node.getData());
+        int diff = data.compareTo(node.getEndereco);
         if (diff < 0) {
             return search(node.getLeft(), data);
         } else if (diff > 0) {
@@ -27,7 +27,7 @@ public class AVLTree extends BinaryTree {
         }
     }
 
-    public void insert(int data) {
+    public void insert(String data) {
         root = insert(root, null, data);
         // Verificação após a inserção
         if (root.getParent() != null) {
@@ -36,11 +36,11 @@ public class AVLTree extends BinaryTree {
         root.setParent(null); // Garantir que o parent do root seja null
     }
 
-    private BTNode insert(BTNode node, BTNode parent, int data) {
+    private BTNode insert(BTNode node, BTNode parent, String data) {
         if (node == null) {
             return new BTNode(data, parent);
         }
-        int diff = Integer.compare(data, node.getData());
+        int diff = data.compareTo(node.getEndereco);
         if (diff < 0) {
             node.setLeft(insert(node.getLeft(), node, data));
         } else if (diff > 0) {
@@ -67,13 +67,22 @@ public class AVLTree extends BinaryTree {
         avRemoveAux(node.getRight());
         }
         //BTNode replica = new BTNode();
-        node.setData(0);
+        node.setEndereco("");
+        node.setEI("");
+        node.setCR("");
+        node.setSR("");
+        node.setAI("");
+        node.setAF("");
+        node.setEM("");
+        node.setEJAFAI("");
+        node.setEJAFAF("");
+        node.setEJAEM("");
         node.setRight(null);
         node.setLeft(null);
         node.setParent(null);
     }
 
-    public void removea(int data) {
+    public void removea(String data) {
         if(search(root,data)!= null){
             System.out.println("\nValor "+ data +" foi removido!\n");
         }
@@ -88,15 +97,15 @@ public class AVLTree extends BinaryTree {
         
     }
 
-    private BTNode removea(BTNode node,int data) {
+    private BTNode removea(BTNode node,String data) {
         if (node == null) {
             System.out.println("\nNó com valor " + data + " não existe na BinaryTree!\n");
             return null;
         }
-        if(node.getData()==data && node.getRep()!=0){
+        if(node.getEndereco()==data && node.getRep()!=0){
             node.setRep(-1);
         }else{
-            int diff = Integer.compare(data, node.getData());
+            int diff = data.compareTo(node.getEndereco);
             if (diff < 0) {
                 node.setLeft(removea(node.getLeft(), data));
             } else if (diff > 0) {
@@ -110,8 +119,8 @@ public class AVLTree extends BinaryTree {
                     return node.getLeft();
                 } else {
                     BTNode predecessor = findMax(node.getLeft());
-                    node.setData(predecessor.getData());
-                    node.setLeft(removea(node.getLeft(), predecessor.getData()));
+                    node.setData(predecessor.getEndereco());
+                    node.setLeft(removea(node.getLeft(), predecessor.getEndereco()));
                 }
             }
         }
