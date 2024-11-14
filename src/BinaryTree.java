@@ -56,7 +56,7 @@ public class BinaryTree {
         if (node == null) {
             return null;
         }
-        int diff = data.compareTo(node.getEndereco);
+        int diff = data.compareTo(node.getEndereco());
         if (diff < 0) {
             return search(node.getLeft(), data);
         } else if (diff > 0) {
@@ -79,7 +79,7 @@ public class BinaryTree {
         if (node == null) {
             return new BTNode(data, parent);
         }
-        int diff = data.compareTo(node.getEndereco);
+        int diff = data.compareTo(node.getEndereco());
         if (diff < 0) {
             node.setLeft(insert(node.getLeft(), node, data));
         } else if (diff >= 0) {
@@ -107,7 +107,7 @@ public class BinaryTree {
 	    if(node == null){
 	        return node;
 	    }
-	    int diff = data.compareTo(node.getEndereco)
+	    int diff = data.compareTo(node.getEndereco());
 	    if(diff > 0){
 	        root.setRight(remove(root.getRight(),data));
 	    }
@@ -124,7 +124,7 @@ public class BinaryTree {
 	        }
 	        else if(node.getRight()!=null){
 	            node.setEndereco(maior(node));
-	            node.setRight(remove(node.getRight(),node.Endereco()));
+	            node.setRight(remove(node.getRight(),node.getEndereco()));
 	        }else{
 	            node.setEndereco(menor(node));
 	            node.setLeft(remove(node.getLeft(),node.getEndereco()));
@@ -165,7 +165,7 @@ public class BinaryTree {
         }
         node.setEndereco("");
         node.setEI("");
-        node.setCR("");
+        node.setCE("");
         node.setSR("");
         node.setAI("");
         node.setAF("");
@@ -290,7 +290,7 @@ public class BinaryTree {
 		for (int i = 0; i < node.getLevel(); ++i) {
 			sb.append("¦   ");
 		}
-		sb.append("├─» " + node.getData() + "\n");
+		sb.append("├─» " + node.getEndereco() + "\n");
 
 		// L
 		if (!node.hasLeftChild()) {
