@@ -46,7 +46,7 @@ public class ReadCSV {
                 binaryTree.insert(Endereco, node);
                 avlTree.insert(Endereco, node);
 
-                System.out.println(node.toString());
+                //System.out.println(node.toString());
                 //System.out.println("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
 
             }
