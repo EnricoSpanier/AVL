@@ -10,10 +10,8 @@ public class ReadCSV {
         this.csvFile = csvFile;
     }
 
-    public void readAndInsertNodes() {
-        int i = 0;
+    public void readAndInsertNodes(BinaryTree binaryTree, AVLTree avlTree) {
         String line;
-        BTNode rootNode = null;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
             // Ignora o cabeçalho, se existir
@@ -23,7 +21,7 @@ public class ReadCSV {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(csvSeparator);
-                String nome = data[0];
+                String Endereco = data[0];
                 String EI = data[1];
                 String CE = data[2];
                 String SR = data[3];
@@ -34,7 +32,7 @@ public class ReadCSV {
                 String EJAFAF = data[8];
                 String EJAEM = data[9];
                 
-                BTNode node = new BTNode(nome);
+                BTNode node = new BTNode(Endereco);
                 node.setEI(EI);
                 node.setCE(CE);
                 node.setSR(SR);
@@ -45,31 +43,15 @@ public class ReadCSV {
                 node.setEJAFAF(EJAFAF);
                 node.setEJAEM(EJAEM);
                 
-                if (rootNode == null) {
-                    rootNode = node;
-                } else {
-                    insertNode(rootNode, node);
-                }
+                binaryTree.insert(Endereco, node);
+                avlTree.insert(Endereco, node);
+
+                System.out.println(node.toString());
+                //System.out.println("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    private void insertNode(BTNode parent, BTNode newNode) {
-        if (newNode.getEndereco().compareTo(parent.getEndereco()) < 0) {
-            if (parent.getLeft() == null) {
-                parent.setLeft(newNode);
-            } else {
-                insertNode(parent.getLeft(), newNode);
-            }
-        } else {
-            if (parent.getRight() == null) {
-                parent.setRight(newNode);
-            } else {
-                insertNode(parent.getRight(), newNode);
-            }
-        }
-    }
-
 }
