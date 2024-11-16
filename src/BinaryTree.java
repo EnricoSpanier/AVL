@@ -384,7 +384,7 @@ public class BinaryTree {
 		}
 		// Pré-ordem = percurso NLR.
 		System.out.println(
-			    "BinaryTree - " + node.getCod() +
+			    "Código da escola - " + node.getCod() +
 			    ", getDegree(): " + node.getDegree() +
 			    ", getHeight(): " + node.getHeight() +
 			    ", parent => {" + (node.getParent() != null ? node.getParent().getCod() : "null") + "}" +
