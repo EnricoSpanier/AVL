@@ -1,5 +1,6 @@
 public class BTNode {
-    protected String Endereco;
+    protected int Cod;
+    protected String Nome;
     protected String EI;
     protected String CE;
     protected String SR;
@@ -16,13 +17,14 @@ public class BTNode {
     protected BTNode right;
     
     public BTNode() { 
-        this("",null); 
+        this(-1 ,null); 
     } 
-    public BTNode(String Endereco) {
-        this(Endereco, null); 
+    public BTNode(int Cod) {
+        this(Cod, null); 
     } 
-    public BTNode(String Endereco, BTNode parent) {
-        this.Endereco = Endereco;
+    public BTNode(int Cod, BTNode parent) {
+        this.Cod = Cod;
+        this.Nome = Nome;
         this.EI = "";
         this.CE = "";
         this.SR = "";
@@ -39,12 +41,20 @@ public class BTNode {
         this.rep = 0;
     }
 
-    public String getEndereco() {
-        return Endereco;
+    public int getCod() {
+        return Cod;
     }
 
-    public void setEndereco(String data) {
-        this.Endereco = data;
+    public void setCod(int data) {
+        this.Cod = data;
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String data) {
+        this.Nome = data;
     }
     
     public String getEI() {
@@ -204,24 +214,26 @@ public class BTNode {
 
     @Override
     public String toString() {
-        return "Endereço escola: " + Endereco +
-                "\nEducação infantil: " + EI +
-                "\nClasse Expecial: " + CE +
-                "\nSala Recurso: " + SR +
-                "\nAnos Iniciais: " + AI +
-                "\nAnos Finais: " + AF + 
-                "\nAnos Finais Ensino Médio: " + EM + 
-                "\nEja Fundamental Anos Iniciais: " + EJAFAI +
-                "\nEja Ensino Médio: " + EJAEM +
-                "\nEja Fundamental Anos Finais: " + EJAFAF +
-                "\nparent: " + (parent != null ? parent.getEndereco() : "null") +
-                "\nleft: " + (left != null ? left.getEndereco() : "null") +
-                "\nright: " + (right != null ? right.getEndereco() : "null") +
-                "\nisRoot(): " + isRoot() +
-                "\nisLeaf(): " + isLeaf() +
-                "\ngetDegree(): " + getDegree() +
-                "\ngetLevel(): " + getLevel() +
-                "\ngetHeight(): " + getHeight() +
-                "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
+        return 
+            "Codigo escola: " + Cod +
+            "\nNome escola: " + Nome +
+            "\nEducação infantil: " + EI +
+            "\nClasse Expecial: " + CE +
+            "\nSala Recurso: " + SR +
+            "\nAnos Iniciais: " + AI +
+            "\nAnos Finais: " + AF + 
+            "\nAnos Finais Ensino Médio: " + EM + 
+            "\nEja Fundamental Anos Iniciais: " + EJAFAI +
+            "\nEja Ensino Médio: " + EJAEM +
+            "\nEja Fundamental Anos Finais: " + EJAFAF +
+            "\nparent: " + (parent != null ? parent.getCod() : "null") +
+            "\nleft: " + (left != null ? left.getCod() : "null") +
+            "\nright: " + (right != null ? right.getCod() : "null") +
+            "\nisRoot(): " + isRoot() +
+            "\nisLeaf(): " + isLeaf() +
+            "\ngetDegree(): " + getDegree() +
+            "\ngetLevel(): " + getLevel() +
+            "\ngetHeight(): " + getHeight() +
+            "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
     }
 }
