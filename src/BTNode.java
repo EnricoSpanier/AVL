@@ -1,21 +1,39 @@
 public class BTNode {
-    protected int data;
+    protected int Cod;
+    protected String Nome;
+    protected String EI;
+    protected String CE;
+    protected String SR;
+    protected String AI;
+    protected String AF;
+    protected String EM;
+    protected String EJAFAI;
+    protected String EJAFAF;
+    protected String EJAEM;
+    protected int height;
+    protected int rep;
     protected BTNode parent;
     protected BTNode left;
     protected BTNode right;
-    protected int height;
-    protected int rep;
-
-    public BTNode() {
-        this(0, null);
-    }
-
-    public BTNode(int data) {
-        this(data, null);
-    }
-
-    public BTNode(int data, BTNode parent) {
-        this.data = data;
+    
+    public BTNode() { 
+        this(-1 ,null); 
+    } 
+    public BTNode(int Cod) {
+        this(Cod, null); 
+    } 
+    public BTNode(int Cod, BTNode parent) {
+        this.Cod = Cod;
+        this.Nome = Nome;
+        this.EI = "";
+        this.CE = "";
+        this.SR = "";
+        this.AI = "";
+        this.AF = "";
+        this.EM = "";
+        this.EJAFAI = "";
+        this.EJAFAF = "";
+        this.EJAEM = "";
         this.parent = parent;
         this.left = null;
         this.right = null;
@@ -23,15 +41,94 @@ public class BTNode {
         this.rep = 0;
     }
 
-
-    public int getData() {
-        return data;
+    public int getCod() {
+        return Cod;
     }
 
-    public void setData(int data) {
-        this.data = data;
+    public void setCod(int data) {
+        this.Cod = data;
     }
 
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String data) {
+        this.Nome = data;
+    }
+    
+    public String getEI() {
+        return EI;
+    }
+
+    public void setEI(String data) {
+        this.EI = data;
+    }
+    
+    public String getCE() {
+        return CE;
+    }
+
+    public void setCE(String data) {
+        this.CE = data;
+    }
+    
+    public String getSR() {
+        return SR;
+    }
+
+    public void setSR(String data) {
+        this.SR = data;
+    }
+   
+    public String getAI() {
+        return AI;
+    }
+
+    public void setAI(String data) {
+        this.AI = data;
+    }
+    
+    public String getAF() {
+        return AF;
+    }
+
+    public void setAF(String data) {
+        this.AF = data;
+    }
+    
+    public String getEM() {
+        return EM;
+    }
+
+    public void setEM(String data) {
+        this.EM = data;
+    }
+    
+    public String getEJAFAI() {
+        return EJAFAI;
+    }
+
+    public void setEJAFAI(String data) {
+        this.EJAFAI = data;
+    }
+    
+    public String getEJAFAF() {
+        return EJAFAF;
+    }
+
+    public void setEJAFAF(String data) {
+        this.EJAFAF = data;
+    }
+    
+    public String getEJAEM() {
+        return EJAEM;
+    }
+
+    public void setEJAEM(String data) {
+        this.EJAEM = data;
+    }
+    
     public BTNode getParent() {
         return parent;
     }
@@ -117,14 +214,26 @@ public class BTNode {
 
     @Override
     public String toString() {
-        return "data: " + data +
-                ", parent: " + (parent != null ? parent.getData() : "null") +
-                ", left: " + (left != null ? left.getData() : "null") +
-                ", right: " + (right != null ? right.getData() : "null") +
-                ", isRoot(): " + isRoot() +
-                ", isLeaf(): " + isLeaf() +
-                ", getDegree(): " + getDegree() +
-                ", getLevel(): " + getLevel() +
-                ", getHeight(): " + getHeight();
+        return 
+            "Codigo escola: " + Cod +
+            "\nNome escola: " + Nome +
+            "\nEducação infantil: " + EI +
+            "\nClasse Expecial: " + CE +
+            "\nSala Recurso: " + SR +
+            "\nAnos Iniciais: " + AI +
+            "\nAnos Finais: " + AF + 
+            "\nAnos Finais Ensino Médio: " + EM + 
+            "\nEja Fundamental Anos Iniciais: " + EJAFAI +
+            "\nEja Ensino Médio: " + EJAEM +
+            "\nEja Fundamental Anos Finais: " + EJAFAF +
+            "\nparent: " + (parent != null ? parent.getCod() : "null") +
+            "\nleft: " + (left != null ? left.getCod() : "null") +
+            "\nright: " + (right != null ? right.getCod() : "null") +
+            "\nisRoot(): " + isRoot() +
+            "\nisLeaf(): " + isLeaf() +
+            "\ngetDegree(): " + getDegree() +
+            "\ngetLevel(): " + getLevel() +
+            "\ngetHeight(): " + getHeight() +
+            "\n\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n";
     }
 }
