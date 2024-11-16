@@ -146,6 +146,7 @@ public class BinaryTree {
 	    }
 	    return root.getCod();
 	}
+	
 	public int menor(BTNode node){
 	    root = root.getLeft();
 	    while(root.getRight()!= null){
@@ -154,14 +155,184 @@ public class BinaryTree {
 	    return root.getCod();
 	}
 	
+	public String analise() { 
+	    BTNode maiorEI = MaiorEI(root);
+	    BTNode maiorCE = MaiorCE(root);
+	    BTNode maiorSR = MaiorSR(root);
+	    BTNode maiorAI = MaiorAI(root);
+	    BTNode maiorAF = MaiorAF(root);
+	    BTNode maiorEM = MaiorEM(root);
+	    BTNode maiorEJAFAI = MaiorEJAFAI(root);
+	    BTNode maiorEJAFAF = MaiorEJAFAF(root);
+	    BTNode maiorEJAEM = MaiorEJAEM(root);
+	    
+	    return "A escola " + maiorEI.getNome() + " tem o maior numero de alunos na Educação Infantil, tendo " + maiorEI.getEI() + " alunos."+
+    "\nA escola " + maiorCE.getNome() + " tem o maior numero de alunos nas Classes Especiais, tendo " + maiorCE.getCE() + " alunos."+
+    "\nA escola " + maiorSR.getNome() + " tem o maior numero de alunos na Sala de Recursos, tendo " + maiorSR.getSR() + " alunos."+
+    "\nA escola " + maiorAI.getNome() + " tem o maior numero de alunos nos Anos Iniciais, tendo " + maiorAI.getAI() + " alunos."+
+    "\nA escola " + maiorAF.getNome() + " tem o maior numero de alunos nos Anos Finais, tendo " + maiorAF.getAF() + " alunos."+
+    "\nA escola " + maiorEM.getNome() + " tem o maior numero de alunos no Ensino Médio, tendo " + maiorEM.getEM() + " alunos."+
+    "\nA escola " + maiorEJAFAI.getNome() + " tem o maior numero de alunos no EJA Anos Iniciais, tendo " + maiorEJAFAI.getEJAFAI() + " alunos."+
+    "\nA escola " + maiorEJAFAF.getNome() + " tem o maior numero de alunos no EJA Anos Finais, tendo " + maiorEJAFAF.getEJAFAF() + " alunos."+
+    "\nA escola " + maiorEJAEM.getNome() + " tem o maior numero de alunos no EJA Ensino Médio, tendo " + maiorEJAEM.getEJAEM() + " alunos."+
+        "\n";
+	}
 	
+	private BTNode MaiorEI(BTNode node) {
+	    if (node == null) {
+	        return null; 
+	    } 
+	    BTNode maior = node; 
+	    BTNode esq = MaiorEI(node.getLeft()); 
+	    BTNode dir = MaiorEI(node.getRight());
+	    if (esq != null && Integer.parseInt(esq.getEI()) > Integer.parseInt(maior.getEI())) {
+	        maior = esq; 
+	    } 
+	    if (dir != null && Integer.parseInt(dir.getEI()) > Integer.parseInt(maior.getEI())) { 
+	        maior = dir; 
+	    } 
+	    return maior; 
+	}
+	
+	private BTNode MaiorCE(BTNode node) {
+	    if (node == null) {
+	        return null; 
+	    } 
+	    BTNode maior = node; 
+	    BTNode esq = MaiorCE(node.getLeft()); 
+	    BTNode dir = MaiorCE(node.getRight());
+	    if (esq != null && Integer.parseInt(esq.getCE()) > Integer.parseInt(maior.getCE())) {
+	        maior = esq; 
+	    } 
+	    if (dir != null && Integer.parseInt(dir.getCE()) > Integer.parseInt(maior.getCE())) { 
+	        maior = dir; 
+	    } 
+	    return maior; 
+	}
+	
+	private BTNode MaiorSR(BTNode node) {
+	    if (node == null) {
+	        return null; 
+	    } 
+	    BTNode maior = node; 
+	    BTNode esq = MaiorSR(node.getLeft()); 
+	    BTNode dir = MaiorSR(node.getRight());
+	    if (esq != null && Integer.parseInt(esq.getSR()) > Integer.parseInt(maior.getSR())) {
+	        maior = esq; 
+	    } 
+	    if (dir != null && Integer.parseInt(dir.getSR()) > Integer.parseInt(maior.getSR())) { 
+	        maior = dir; 
+	    } 
+	    return maior; 
+	}
+	
+	private BTNode MaiorAI(BTNode node) {
+    if (node == null) {
+        return null;
+    }
+    BTNode maior = node;
+    BTNode esq = MaiorAI(node.getLeft());
+    BTNode dir = MaiorAI(node.getRight());
+
+    if (esq != null && Integer.parseInt(esq.getAI()) > Integer.parseInt(maior.getAI())) {
+        maior = esq;
+    }
+    if (dir != null && Integer.parseInt(dir.getAI()) > Integer.parseInt(maior.getAI())) {
+        maior = dir;
+    }
+    return maior;
+}
+    
+    private BTNode MaiorAF(BTNode node) {
+        if (node == null) {
+            return null;
+        }
+        BTNode maior = node;
+        BTNode esq = MaiorAF(node.getLeft());
+        BTNode dir = MaiorAF(node.getRight());
+    
+        if (esq != null && Integer.parseInt(esq.getAF()) > Integer.parseInt(maior.getAF())) {
+            maior = esq;
+        }
+        if (dir != null && Integer.parseInt(dir.getAF()) > Integer.parseInt(maior.getAF())) {
+            maior = dir;
+        }
+        return maior;
+    }
+
+	private BTNode MaiorEM(BTNode node) {
+        if (node == null) {
+            return null;
+        }
+        BTNode maior = node;
+        BTNode esq = MaiorEM(node.getLeft());
+        BTNode dir = MaiorEM(node.getRight());
+    
+        if (esq != null && Integer.parseInt(esq.getEM()) > Integer.parseInt(maior.getEM())) {
+            maior = esq;
+        }
+        if (dir != null && Integer.parseInt(dir.getEM()) > Integer.parseInt(maior.getEM())) {
+            maior = dir;
+        }
+        return maior;
+    }
+
+	private BTNode MaiorEJAFAI(BTNode node) {
+        if (node == null) {
+            return null;
+        }
+        BTNode maior = node;
+        BTNode esq = MaiorEJAFAI(node.getLeft());
+        BTNode dir = MaiorEJAFAI(node.getRight());
+    
+        if (esq != null && Integer.parseInt(esq.getEJAFAI()) > Integer.parseInt(maior.getEJAFAI())) {
+            maior = esq;
+        }
+        if (dir != null && Integer.parseInt(dir.getEJAFAI()) > Integer.parseInt(maior.getEJAFAI())) {
+            maior = dir;
+        }
+        return maior;
+    }
+
+	private BTNode MaiorEJAFAF(BTNode node) {
+        if (node == null) {
+            return null;
+        }
+        BTNode maior = node;
+        BTNode esq = MaiorEJAFAF(node.getLeft());
+        BTNode dir = MaiorEJAFAF(node.getRight());
+    
+        if (esq != null && Integer.parseInt(esq.getEJAFAF()) > Integer.parseInt(maior.getEJAFAF())) {
+            maior = esq;
+        }
+        if (dir != null && Integer.parseInt(dir.getEJAFAF()) > Integer.parseInt(maior.getEJAFAF())) {
+            maior = dir;
+        }
+        return maior;
+    }
+
+	private BTNode MaiorEJAEM(BTNode node) {
+        if (node == null) {
+            return null;
+        }
+        BTNode maior = node;
+        BTNode esq = MaiorEJAEM(node.getLeft());
+        BTNode dir = MaiorEJAEM(node.getRight());
+    
+        if (esq != null && Integer.parseInt(esq.getEJAEM()) > Integer.parseInt(maior.getEJAEM())) {
+            maior = esq;
+        }
+        if (dir != null && Integer.parseInt(dir.getEJAEM()) > Integer.parseInt(maior.getEJAEM())) {
+            maior = dir;
+        }
+        return maior;
+    }
+
 	public void avRemove(){
         avRemoveAux(root);
         root = null;
     }
         
-        
-
     public void avRemoveAux(BTNode node){
         if(node.getLeft() != null){
         avRemoveAux(node.getLeft());

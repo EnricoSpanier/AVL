@@ -19,9 +19,11 @@ public class BTNode {
     public BTNode() { 
         this(-1 ,null); 
     } 
+    
     public BTNode(int Cod) {
         this(Cod, null); 
     } 
+    
     public BTNode(int Cod, BTNode parent) {
         this.Cod = Cod;
         this.Nome = Nome;

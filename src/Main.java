@@ -151,47 +151,51 @@ public class Main {
 					break;
 					
 				case 6:
-				    System.out.println("Caso deseje Procurar na AVLTree - 1\nCaso de deseje Procurar na BinaryTree - 2");
+				    System.out.println("Caso deseje analisar pela AVLTree - 1\nCaso de deseje analisar pela BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
-				        System.out.println("Qual o código da escola deseja Procurar? ");
-				        aux = sc.nextInt();
 					    long start = System.currentTimeMillis();
-					    busca = AVL.search(aux);
+					    System.out.println(AVL.analise());
 					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado para buscar na AVLTree foi de "+ (end) +" milisegundos");
-					    if(busca!= null){
-					        System.out.println(busca.toString());
-					    }else{
-					        System.out.println("node não existente");
-					    }
+					    System.out.println("o tempo usado para analisar na AVLTree foi de "+ (end) +" milisegundos");
 				    }
 				    else if(aux == 2){
-				        System.out.println("Qual o código da escola deseja Procurar? ");
-				        aux = sc.nextInt();
 					    long start = System.currentTimeMillis();
-					    busca = BTree.search(aux);
+					    System.out.println(BTree.analise());
 					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado para buscar na BinaryTree foi de "+ (end) +" milisegundos");
-					    if(busca!= null){
-					        System.out.println(busca.toString());
-					    }else{
-					        System.out.println("node não existente");
-					    }
+					    System.out.println("\nO tempo usado para buscar na BinaryTree foi de "+ (end) +" milisegundos");
 				    }
 					else{
 					    System.out.println("Opção invalida!!");
 					}
-					
+					break;
 					
 				case 7:
-					po2=1350;
-					AVL.avRemove();
-					BTree.avRemove();
+					
+					System.out.println("Só usou a AVLTree -1\nSó usou a BinaryTree -2\nUsou ambas -3\n");
+					aux = sc.nextInt();
+					switch(aux){
+					    case 1 :
+					        po2=1350;
+					        AVL.avRemove();
+					        break;
+				        case 2:
+				            po2=1350;
+				            BTree.avRemove();
+					        break;
+					    case 3:
+					        po2=1350;
+					        AVL.avRemove();
+					        BTree.avRemove();
+					        break;
+					    default:
+					        System.out.println("\nOpção invalida\n");
+					        break;
+					}
 					break;
 					
 				/*case 8:
-				    possivel implementação imprimindo em txt, mas como nossa arvore tem 5533 dados... né?
+				    possivel implementação imprimindo em txt não feita
 				    System.out.println("-=-=-=-=-=-=-=-=-=-=-Arvore AVL-=-=-=-=-=-=-=-=-=-=--=-=-");
 					System.out.println(AVL.inReversedOrderAscii());
 					System.out.println("-=-=-=-=-=-=-=-=-=-=-Arvore Binaria-=-=-=-=-=-=-=-=-=-=--=-=-");
@@ -199,7 +203,7 @@ public class Main {
 					break;
 				*/
 				default:
-				    System.out.println("erro");
+				    System.out.println("\nOpção invalida\n");
 
 			}
 

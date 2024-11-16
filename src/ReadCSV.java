@@ -30,8 +30,8 @@ public class ReadCSV {
                 String AF = data[6];
                 String EM = data[7];
                 String EJAFAI = data[8];
-                String EJAFAF = data[9];
-                String EJAEM = data[10];
+                String EJAFAF = data[10];
+                String EJAEM = data[9];
                 
                 BTNode node = new BTNode(Cod);
                 node.setNome(Nome);
@@ -73,8 +73,8 @@ public class ReadCSV {
                 String AF = data[6];
                 String EM = data[7];
                 String EJAFAI = data[8];
-                String EJAFAF = data[9];
-                String EJAEM = data[10];
+                String EJAFAF = data[10];
+                String EJAEM = data[9];
                 
                 BTNode node = new BTNode(Cod);
                 node.setNome(Nome);
