@@ -166,15 +166,15 @@ public class BinaryTree {
 	    BTNode maiorEJAFAF = MaiorEJAFAF(root);
 	    BTNode maiorEJAEM = MaiorEJAEM(root);
 	    
-	    return "A escola " + maiorEI.getNome() + " tem o maior numero de alunos na Educação Infantil, tendo " + maiorEI.getEI() + " alunos."+
-    "\nA escola " + maiorCE.getNome() + " tem o maior numero de alunos nas Classes Especiais, tendo " + maiorCE.getCE() + " alunos."+
-    "\nA escola " + maiorSR.getNome() + " tem o maior numero de alunos na Sala de Recursos, tendo " + maiorSR.getSR() + " alunos."+
-    "\nA escola " + maiorAI.getNome() + " tem o maior numero de alunos nos Anos Iniciais, tendo " + maiorAI.getAI() + " alunos."+
-    "\nA escola " + maiorAF.getNome() + " tem o maior numero de alunos nos Anos Finais, tendo " + maiorAF.getAF() + " alunos."+
-    "\nA escola " + maiorEM.getNome() + " tem o maior numero de alunos no Ensino Médio, tendo " + maiorEM.getEM() + " alunos."+
-    "\nA escola " + maiorEJAFAI.getNome() + " tem o maior numero de alunos no EJA Anos Iniciais, tendo " + maiorEJAFAI.getEJAFAI() + " alunos."+
-    "\nA escola " + maiorEJAFAF.getNome() + " tem o maior numero de alunos no EJA Anos Finais, tendo " + maiorEJAFAF.getEJAFAF() + " alunos."+
-    "\nA escola " + maiorEJAEM.getNome() + " tem o maior numero de alunos no EJA Ensino Médio, tendo " + maiorEJAEM.getEJAEM() + " alunos."+
+	    return "A escola " + maiorEI.getCod() + " " + maiorEI.getNome() + " tem o maior numero de alunos na Educação Infantil, tendo " + maiorEI.getEI() + " alunos."+
+    "\nA escola " + maiorCE.getCod() + " " + maiorCE.getNome() + " tem o maior numero de alunos nas Classes Especiais, tendo " + maiorCE.getCE() + " alunos."+
+    "\nA escola " + maiorSR.getCod() + " " + maiorSR.getNome() + " tem o maior numero de alunos na Sala de Recursos, tendo " + maiorSR.getSR() + " alunos."+
+    "\nA escola " + maiorAI.getCod() + " " + maiorAI.getNome() + " tem o maior numero de alunos nos Anos Iniciais, tendo " + maiorAI.getAI() + " alunos."+
+    "\nA escola " + maiorAF.getCod() + " " + maiorAF.getNome() + " tem o maior numero de alunos nos Anos Finais, tendo " + maiorAF.getAF() + " alunos."+
+    "\nA escola " + maiorEM.getCod() + " " + maiorEM.getNome() + " tem o maior numero de alunos no Ensino Médio, tendo " + maiorEM.getEM() + " alunos."+
+    "\nA escola " + maiorEJAFAI.getCod() + " " + maiorEJAFAI.getNome() + " tem o maior numero de alunos no EJA Anos Iniciais, tendo " + maiorEJAFAI.getEJAFAI() + " alunos."+
+    "\nA escola " + maiorEJAFAF.getCod() + " " + maiorEJAFAF.getNome() + " tem o maior numero de alunos no EJA Anos Finais, tendo " + maiorEJAFAF.getEJAFAF() + " alunos."+
+    "\nA escola " + maiorEJAEM.getCod() + " " + maiorEJAEM.getNome() + " tem o maior numero de alunos no EJA Ensino Médio, tendo " + maiorEJAEM.getEJAEM() + " alunos."+
         "\n";
 	}
 	
