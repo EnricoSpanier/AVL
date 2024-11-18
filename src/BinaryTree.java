@@ -110,51 +110,67 @@ public class BinaryTree {
         
     }
 	
-	public BTNode remove(BTNode node, int data){
-	    if(node == null){
-	        return node;
-	    }
-	    if(data>node.getCod()){
-	        root.setRight(remove(root.getRight(),data));
-	    }
-	    else if(data<node.getCod()){
-	        root.setLeft(remove(root.getLeft(),data));    
-	    }
-	    else{
-	        if(node.isLeaf()){
-	            if(node.getParent().getLeft().getCod()==data){
-	                node.getParent().setLeft(null);
-	            }else{
-	                node.getParent().setRight(null);
-	            }
-	        }
-	        else if(node.getRight()!=null){
-	            node.setCod(maior(node));
-	            node.setRight(remove(node.getRight(),node.getCod()));
-	        }else{
-	            node.setCod(menor(node));
-	            node.setLeft(remove(node.getLeft(),node.getCod()));
-	        }
-	    }
-	    return node;
-	}
-	
-	public int maior(BTNode node){
-	    root = root.getRight();
-	    while(root.getLeft()!=null){
-	        root = root.getLeft();
-	    }
-	    return root.getCod();
-	}
-	
-	public int menor(BTNode node){
-	    root = root.getLeft();
-	    while(root.getRight()!= null){
-	        root = root.getRight();
-	    }
-	    return root.getCod();
-	}
-	
+    public void remove(int data) {
+        if (search(root, data) != null) {
+            System.out.println("\nValor " + data + " foi removido!\n");
+            root = remove(root, data); // Atualiza a raiz após remoção
+        } else {
+            System.out.println("Valor " + data + " não encontrado.");
+        }
+        // Verificação após a remoção
+        if (root != null && root.getParent() != null) {
+            root = root.getParent();
+        }
+        if (root != null) {
+            root.setParent(null);
+        }
+    }
+
+    public BTNode remove(BTNode node, int data) {
+        if (node == null) {
+            return node; // Caso a árvore esteja vazia ou o nó não encontrado
+        }
+
+        // Caso 1: Se o valor a ser removido é maior que o valor do nó, vai para a subárvore direita
+        if (data > node.getCod()) {
+            node.setRight(remove(node.getRight(), data));
+        }
+        // Caso 2: Se o valor a ser removido é menor que o valor do nó, vai para a subárvore esquerda
+        else if (data < node.getCod()) {
+            node.setLeft(remove(node.getLeft(), data));
+        }
+        // Caso 3: Encontrou o nó a ser removido
+        else {
+            // Caso 3.1: O nó não tem filhos (nó folha)
+            if (node.isLeaf()) {
+                return null; // O nó é removido
+            }   
+            // Caso 3.2: O nó tem um filho à direita
+            else if (node.getLeft() == null) {
+                return node.getRight(); // Substitui o nó pelo filho à direita
+            }
+            // Caso 3.3: O nó tem um filho à esquerda
+            else if (node.getRight() == null) {
+                return node.getLeft(); // Substitui o nó pelo filho à esquerda
+            }
+            // Caso 3.4: O nó tem dois filhos
+            else {
+                // Encontrar o nó com o valor mínimo na subárvore direita (sucessor em ordem)
+                BTNode minNode = findMin(node.getRight());
+                node.setCod(minNode.getCod()); // Substitui o valor do nó a ser removido pelo sucessor
+                node.setRight(remove(node.getRight(), minNode.getCod())); // Remove o sucessor
+            }
+        }
+        return node; // Retorna o nó possivelmente alterado
+    }
+
+    private BTNode findMin(BTNode node) {
+        while (node.getLeft() != null) {
+            node = node.getLeft(); // Vai até o nó mais à esquerda
+        }
+    return node;
+    }
+
 	public String analise() { 
 	    BTNode maiorEI = MaiorEI(root);
 	    BTNode maiorCE = MaiorCE(root);
