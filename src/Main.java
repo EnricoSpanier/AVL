@@ -13,7 +13,7 @@ public class Main {
 		int po2=1;		
 		while(po2!=1350){
 			System.out.println("\n1- Criar Arvore\n2- mostrar arvore\n3- remover valor"+
-			                    "\n4- apagar arvore\n5- Buscar valor\n6- Analise estatistica \n7- sair\n");
+			                    "\n4- apagar arvore\n5- Buscar codigo\n6- Analise estatistica \n7- sair\n");
 			op = sc.nextInt();
 			switch(op){
 				case 1:
