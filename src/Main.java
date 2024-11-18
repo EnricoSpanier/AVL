@@ -12,11 +12,40 @@ public class Main {
 		int op;
 		int po2=1;		
 		while(po2!=1350){
-			System.out.println("\n1- Criar Arvore\n2- mostrar arvore\n3- remover valor"+
+			System.out.println("\n0- Inserir valores manualmente na Arvore\n1- Ler csv e colocar na Arvore\n2- mostrar arvore\n3- remover valor"+
 			                    "\n4- apagar arvore\n5- Buscar codigo\n6- Analise estatistica \n7- sair\n");
-			op = sc.nextInt();
+			
+			op = readInt(sc, "Escolha uma opção:");
+			
 			switch(op){
-				case 1:
+			    
+			    case 1:
+			        System.out.println("Caso deseje montar a AVLTree - 1\nCaso de deseje montar a BinaryTree - 2");
+					aux = sc.nextInt();
+					if(aux == 1){
+					    long start = System.currentTimeMillis();
+					    System.out.println("Insira o código da escola que deseja inserir");
+					    int cod = sc.nextInt();
+					    BTNode node = new BTNode(cod);
+					    AVL.insertm(cod,node);
+					    long end = System.currentTimeMillis()-start;
+					    System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de "+ (end) +" milisegundos");
+					}
+					else if(aux == 2){
+					    long start = System.currentTimeMillis();
+					    System.out.println("Insira o código da escola que deseja inserir");
+					    int cod = sc.nextInt();
+					    BTNode node = new BTNode();
+					   // BTree.insertm(cod,node);
+					    long end = System.currentTimeMillis()-start;
+					    System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de "+ (end) +" milisegundos");
+					}
+					else{
+					    System.out.println("Opção invalida!!");
+					}
+					break;
+			    
+				case 2:
 				    System.out.println("Caso deseje montar a AVLTree - 1\nCaso de deseje montar a BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
@@ -36,7 +65,7 @@ public class Main {
 					}
 					break;
 				
-				case 2:
+				case 3:
 				    System.out.println("Caso deseje mostrar a AVLTree - 1\nCaso de deseje mostrar a BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
@@ -62,7 +91,7 @@ public class Main {
 					}
 					break;
 
-				case 3:
+				case 4:
 				    System.out.println("Caso deseje remover um valor da AVLTree - 1"+
 				    "\nCaso de deseje remover um valor da BinaryTree - 2");
 					aux = sc.nextInt();
@@ -91,7 +120,7 @@ public class Main {
 					}
 					break;
 
-				case 4:
+				case 5:
 				    System.out.println("Caso deseje apagar a AVLTree - 1\nCaso de deseje apagar a BinaryTree - 2");
 					aux = sc.nextInt();
 				    if(aux == 1){
@@ -115,7 +144,7 @@ public class Main {
 					}
 					break;
 
-				case 5:
+				case 6:
 				    System.out.println("Caso deseje Procurar na AVLTree - 1\nCaso de deseje Procurar na BinaryTree - 2");
 					aux = sc.nextInt();
 					BTNode busca = new BTNode();
@@ -150,7 +179,7 @@ public class Main {
 					}
 					break;
 					
-				case 6:
+				case 7:
 				    System.out.println("Caso deseje analisar pela AVLTree - 1\nCaso de deseje analisar pela BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
@@ -170,7 +199,7 @@ public class Main {
 					}
 					break;
 					
-				case 7:
+				case 8:
 					
 					System.out.println("Só usou a AVLTree -1\nSó usou a BinaryTree -2\nUsou ambas -3\n");
 					aux = sc.nextInt();
@@ -178,15 +207,18 @@ public class Main {
 					    case 1 :
 					        po2=1350;
 					        AVL.avRemove();
+					        sc.close();
 					        break;
 				        case 2:
 				            po2=1350;
 				            BTree.avRemove();
+				            sc.close();
 					        break;
 					    case 3:
 					        po2=1350;
 					        AVL.avRemove();
 					        BTree.avRemove();
+					        sc.close();
 					        break;
 					    default:
 					        System.out.println("\nOpção invalida\n");
@@ -194,22 +226,22 @@ public class Main {
 					}
 					break;
 					
-				/*case 8:
-				    possivel implementação imprimindo em txt não feita
-				    System.out.println("-=-=-=-=-=-=-=-=-=-=-Arvore AVL-=-=-=-=-=-=-=-=-=-=--=-=-");
-					System.out.println(AVL.inReversedOrderAscii());
-					System.out.println("-=-=-=-=-=-=-=-=-=-=-Arvore Binaria-=-=-=-=-=-=-=-=-=-=--=-=-");
-					System.out.println(BTree.inReversedOrderAscii());
-					break;
-				*/
 				default:
 				    System.out.println("\nOpção invalida\n");
 
 			}
 
 		}
-		sc.close();
+		
 	}
+	public static int readInt(Scanner sc, String prompt) {
+        System.out.println(prompt);
+        while (!sc.hasNextInt()) {
+            System.out.println("Entrada inválida. Por favor, insira um número inteiro.");
+            sc.next(); // Consumir entrada inválida
+        }
+        return sc.nextInt();
+    }
 }
 
 /*
