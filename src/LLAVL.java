@@ -1,6 +1,6 @@
 public class LLAVL {
     protected AVLTree avl;
-    protected AVLTree next;
+    protected LLAVL next;
     
     public LLAVL() {
         this(null, null);
@@ -10,7 +10,7 @@ public class LLAVL {
         this.avl = avl;
     }
 
-    public LLAVL(AVLTree avl, AVLTree next) {
+    public LLAVL(AVLTree avl, LLAVL next) {
         this.avl = avl;
         this.next = next;
     }
@@ -23,11 +23,11 @@ public class LLAVL {
         this.avl = avl;
     }
     
-    public AVLTree getNext() {
+    public LLAVL getNext() {
         return next;
     }
 
-    public void setNext(AVLTree next) {
+    public void setNext(LLAVL next) {
         this.next = next;
     }
 }

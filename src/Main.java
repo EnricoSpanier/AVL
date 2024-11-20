@@ -51,91 +51,101 @@ public class Main {
 				    System.out.println("Caso deseje montar a AVLTree - 1\nCaso de deseje montar a BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
-					    LLAVL LLAVLA = new LLAVL();
-					    long start = System.currentTimeMillis();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
-					    LLAVLP.setAvl(AVL);
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
-					    LLAVLP.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLP.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    AVL.avRemove();
-					    reader.readAndInsertNodesAvl(AVL, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
-					    LLAVLA.setNext(AVL);
-					    LLAVLA.setAvl(LLAVLA.getNext());
-					    
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado pela AVLTree para inserir foi de "+ (end) +" milisegundos");
+					    LLAVL head = new LLAVL();
+						LLAVL current = head;
+
+						long start = System.currentTimeMillis();
+
+						// Primeiro semestre de 2019
+						AVLTree AVL1 = new AVLTree();
+						reader.readAndInsertNodesAvl(AVL1, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
+						current.setAvl(AVL1);
+						AVL1.avRemove();
+
+						/*// Segundo semestre de 2019
+						AVLTree AVL2 = new AVLTree();
+						reader.readAndInsertNodesAvl(AVL2, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
+						current.setNext(new LLAVL(AVL2));
+						current = current.getNext();
+						AVL2.avRemove();
+
+						// Primeiro semestre de 2020
+						AVLTree AVL3 = new AVLTree();
+						reader.readAndInsertNodesAvl(AVL3, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
+						current.setNext(new LLAVL(AVL3));
+						current = current.getNext();
+						AVL3.avRemove();
+
+						// Segundo semestre de 2020
+						AVLTree AVL4 = new AVLTree();
+						reader.readAndInsertNodesAvl(AVL4, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
+						current.setNext(new LLAVL(AVL4));
+						current = current.getNext();
+						AVL4.avRemove();
+
+						// Primeiro semestre de 2021
+						AVLTree AVL5 = new AVLTree();
+						reader.readAndInsertNodesAvl(AVL5, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
+						current.setNext(new LLAVL(AVL5));
+						current = current.getNext();
+						AVL5.avRemove();
+
+						// Segundo semestre de 2021
+						AVLTree AVL6 = new AVLTree();
+						reader.readAndInsertNodesAvl(AVL6, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
+						current.setNext(new LLAVL(AVL6));
+						current = current.getNext();
+						AVL6.avRemove();
+*/
+						long end = System.currentTimeMillis() - start;
+						System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de " + end + " milisegundos");
+
+						// Salve a lista ligada de AVLTree para análise posterior
+						LLAVLP = head;
 					}
 					else if(aux == 2){
-					    LLBT LLBTA = new LLBT();
-					    long start = System.currentTimeMillis();
+					    LLBT head = new LLBT();
+        				LLBT current = head;
+
+						long start = System.currentTimeMillis();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
-					    LLBTP.setBT(BTree);
+					    current.setBT(BTree);
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
-					    LLBTP.setNext(BTree);
-					    LLBTA.setBT(LLBTP.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree,"src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
-					    LLBTA.setNext(BTree);
-					    LLBTA.setBT(LLBTA.getNext());
+					    current.setNext(new LLBT(BTree));
+        				current = current.getNext();
 					    
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" milisegundos");
@@ -260,22 +270,38 @@ public class Main {
 					break;
 					
 				case 7:
-				    System.out.println("Caso deseje analisar pela AVLTree - 1\nCaso de deseje analisar pela BinaryTree - 2");
+					System.out.println("Caso deseje analisar pela AVLTree - 1\nCaso de deseje analisar pela BinaryTree - 2");
 					aux = sc.nextInt();
-					if(aux == 1){
-					    long start = System.currentTimeMillis();
-					    System.out.println(AVL.analise());
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado para analisar na AVLTree foi de "+ (end) +" milisegundos");
-				    }
-				    else if(aux == 2){
-					    long start = System.currentTimeMillis();
-					    System.out.println(BTree.analise());
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("\nO tempo usado para buscar na BinaryTree foi de "+ (end) +" milisegundos");
-				    }
-					else{
-					    System.out.println("Opção invalida!!");
+					if (aux == 1) {
+						// Certifique-se de que LLAVLP está corretamente configurado
+						if (LLAVLP != null) {
+							long start = System.currentTimeMillis();
+							try {
+								System.out.println(AVL.analise(LLAVLP));
+							} catch (OutOfMemoryError e) {
+								System.out.println("Erro de memória: " + e.getMessage());
+							}
+							long end = System.currentTimeMillis() - start;
+							System.out.println("o tempo usado para analisar na AVLTree foi de " + end + " milisegundos");
+						} else {
+							System.out.println("A lista ligada de AVLTree está vazia.");
+						}
+					} else if (aux == 2) {
+						// Certifique-se de que LLBTP está corretamente configurado
+						if (LLBTP != null) {
+							long start = System.currentTimeMillis();
+							try {
+								System.out.println(BTree.analise(LLBTP));
+							} catch (OutOfMemoryError e) {
+								System.out.println("Erro de memória: " + e.getMessage());
+							}
+							long end = System.currentTimeMillis() - start;
+							System.out.println("o tempo usado para analisar na BinaryTree foi de " + end + " milisegundos");
+						} else {
+							System.out.println("A lista ligada de BinaryTree está vazia.");
+						}
+					} else {
+						System.out.println("Opção invalida!!");
 					}
 					break;
 					

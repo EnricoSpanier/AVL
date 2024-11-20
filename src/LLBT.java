@@ -1,6 +1,6 @@
 public class LLBT {
     protected BinaryTree bt;
-    protected BinaryTree next;
+    protected LLBT next;
 
     public LLBT() {
         this(null, null);
@@ -10,7 +10,7 @@ public class LLBT {
         this.bt = bt;
     }
 
-    public LLBT(BinaryTree bt, BinaryTree next) {
+    public LLBT(BinaryTree bt, LLBT next) {
         this.bt = bt;
         this.next = next;
     }
@@ -23,11 +23,11 @@ public class LLBT {
         this.bt = bt;
     }
 
-    public BinaryTree getNext() {
+    public LLBT getNext() {
         return next;
     }
 
-    public void setNext(BinaryTree next) {
+    public void setNext(LLBT next) {
         this.next = next;
     }
 }

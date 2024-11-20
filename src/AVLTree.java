@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AVLTree extends BinaryTree {
@@ -176,6 +180,99 @@ public class AVLTree extends BinaryTree {
 		updateHeight(node);
 		return balance(node);
 	}
+
+	public String analise(LLAVL head) {
+		Map<String, List<BTNode>> municipios = new HashMap<>();
+		
+		LLAVL current = head;
+		while (current != null) {
+			coletarDados(current.getAvl().getRoot(), municipios);
+			current = current.getNext();
+		}
+	
+		StringBuilder resultado = new StringBuilder();
+		for (Map.Entry<String, List<BTNode>> entry : municipios.entrySet()) {
+			String municipio = entry.getKey();
+			List<BTNode> nodes = entry.getValue();
+	
+			double mediaEI = calcularMedia(nodes, "EI");
+			double mediaCE = calcularMedia(nodes, "CE");
+			double mediaSR = calcularMedia(nodes, "SR");
+			double mediaAI = calcularMedia(nodes, "AI");
+			double mediaAF = calcularMedia(nodes, "AF");
+			double mediaEM = calcularMedia(nodes, "EM");
+			double mediaEJAFAI = calcularMedia(nodes, "EJAFAI");
+			double mediaEJAFAF = calcularMedia(nodes, "EJAFAF");
+			double mediaEJAEM = calcularMedia(nodes, "EJAEM");
+	
+			resultado.append("Município: ").append(municipio).append("\n")
+					.append("Média de alunos na Educação Infantil: ").append(mediaEI).append("\n")
+					.append("Média de alunos nas Classes Especiais: ").append(mediaCE).append("\n")
+					.append("Média de alunos na Sala de Recursos: ").append(mediaSR).append("\n")
+					.append("Média de alunos nos Anos Iniciais: ").append(mediaAI).append("\n")
+					.append("Média de alunos nos Anos Finais: ").append(mediaAF).append("\n")
+					.append("Média de alunos no Ensino Médio: ").append(mediaEM).append("\n")
+					.append("Média de alunos no EJA Anos Iniciais: ").append(mediaEJAFAI).append("\n")
+					.append("Média de alunos no EJA Anos Finais: ").append(mediaEJAFAF).append("\n")
+					.append("Média de alunos no EJA Ensino Médio: ").append(mediaEJAEM).append("\n\n");
+		}
+	
+		return resultado.toString();
+	}
+	
+	private void coletarDados(BTNode node, Map<String, List<BTNode>> municipios) {
+		if (node == null) {
+			return;
+		}
+	
+		String municipio = node.getMunicipio();
+		municipios.putIfAbsent(municipio, new ArrayList<>());
+		municipios.get(municipio).add(node);
+	
+		coletarDados(node.getLeft(), municipios);
+		coletarDados(node.getRight(), municipios);
+	}
+	
+	private double calcularMedia(List<BTNode> nodes, String tipo) {
+		int soma = 0;
+		int count = 0;
+	
+		for (BTNode node : nodes) {
+			switch (tipo) {
+				case "EI":
+					soma += Integer.parseInt(node.getEI());
+					break;
+				case "CE":
+					soma += Integer.parseInt(node.getCE());
+					break;
+				case "SR":
+					soma += Integer.parseInt(node.getSR());
+					break;
+				case "AI":
+					soma += Integer.parseInt(node.getAI());
+					break;
+				case "AF":
+					soma += Integer.parseInt(node.getAF());
+					break;
+				case "EM":
+					soma += Integer.parseInt(node.getEM());
+					break;
+				case "EJAFAI":
+					soma += Integer.parseInt(node.getEJAFAI());
+					break;
+				case "EJAFAF":
+					soma += Integer.parseInt(node.getEJAFAF());
+					break;
+				case "EJAEM":
+					soma += Integer.parseInt(node.getEJAEM());
+					break;
+			}
+			count++;
+		}
+	
+		return count == 0 ? 0 : (double) soma / count;
+	}
+
 
 	public void avRemove() {
 		avRemoveAux(root);

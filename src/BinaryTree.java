@@ -1,5 +1,9 @@
 // imports para a fila usada na levelOrderTraversal(BTNode node). 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -277,177 +281,96 @@ public class BinaryTree {
     return node;
     }
 
-	public String analise() { 
-	    BTNode maiorEI = MaiorEI(root);
-	    BTNode maiorCE = MaiorCE(root);
-	    BTNode maiorSR = MaiorSR(root);
-	    BTNode maiorAI = MaiorAI(root);
-	    BTNode maiorAF = MaiorAF(root);
-	    BTNode maiorEM = MaiorEM(root);
-	    BTNode maiorEJAFAI = MaiorEJAFAI(root);
-	    BTNode maiorEJAFAF = MaiorEJAFAF(root);
-	    BTNode maiorEJAEM = MaiorEJAEM(root);
-	    
-	    return "A escola " + maiorEI.getCod() + " " + maiorEI.getNome() + " tem o maior numero de alunos na Educação Infantil, tendo " + maiorEI.getEI() + " alunos."+
-    "\nA escola " + maiorCE.getCod() + " " + maiorCE.getNome() + " tem o maior numero de alunos nas Classes Especiais, tendo " + maiorCE.getCE() + " alunos."+
-    "\nA escola " + maiorSR.getCod() + " " + maiorSR.getNome() + " tem o maior numero de alunos na Sala de Recursos, tendo " + maiorSR.getSR() + " alunos."+
-    "\nA escola " + maiorAI.getCod() + " " + maiorAI.getNome() + " tem o maior numero de alunos nos Anos Iniciais, tendo " + maiorAI.getAI() + " alunos."+
-    "\nA escola " + maiorAF.getCod() + " " + maiorAF.getNome() + " tem o maior numero de alunos nos Anos Finais, tendo " + maiorAF.getAF() + " alunos."+
-    "\nA escola " + maiorEM.getCod() + " " + maiorEM.getNome() + " tem o maior numero de alunos no Ensino Médio, tendo " + maiorEM.getEM() + " alunos."+
-    "\nA escola " + maiorEJAFAI.getCod() + " " + maiorEJAFAI.getNome() + " tem o maior numero de alunos no EJA Anos Iniciais, tendo " + maiorEJAFAI.getEJAFAI() + " alunos."+
-    "\nA escola " + maiorEJAFAF.getCod() + " " + maiorEJAFAF.getNome() + " tem o maior numero de alunos no EJA Anos Finais, tendo " + maiorEJAFAF.getEJAFAF() + " alunos."+
-    "\nA escola " + maiorEJAEM.getCod() + " " + maiorEJAEM.getNome() + " tem o maior numero de alunos no EJA Ensino Médio, tendo " + maiorEJAEM.getEJAEM() + " alunos."+
-        "\n";
-	}
-	
-	private BTNode MaiorEI(BTNode node) {
-	    if (node == null) {
-	        return null; 
-	    } 
-	    BTNode maior = node; 
-	    BTNode esq = MaiorEI(node.getLeft()); 
-	    BTNode dir = MaiorEI(node.getRight());
-	    if (esq != null && Integer.parseInt(esq.getEI()) > Integer.parseInt(maior.getEI())) {
-	        maior = esq; 
-	    } 
-	    if (dir != null && Integer.parseInt(dir.getEI()) > Integer.parseInt(maior.getEI())) { 
-	        maior = dir; 
-	    } 
-	    return maior; 
-	}
-	
-	private BTNode MaiorCE(BTNode node) {
-	    if (node == null) {
-	        return null; 
-	    } 
-	    BTNode maior = node; 
-	    BTNode esq = MaiorCE(node.getLeft()); 
-	    BTNode dir = MaiorCE(node.getRight());
-	    if (esq != null && Integer.parseInt(esq.getCE()) > Integer.parseInt(maior.getCE())) {
-	        maior = esq; 
-	    } 
-	    if (dir != null && Integer.parseInt(dir.getCE()) > Integer.parseInt(maior.getCE())) { 
-	        maior = dir; 
-	    } 
-	    return maior; 
-	}
-	
-	private BTNode MaiorSR(BTNode node) {
-	    if (node == null) {
-	        return null; 
-	    } 
-	    BTNode maior = node; 
-	    BTNode esq = MaiorSR(node.getLeft()); 
-	    BTNode dir = MaiorSR(node.getRight());
-	    if (esq != null && Integer.parseInt(esq.getSR()) > Integer.parseInt(maior.getSR())) {
-	        maior = esq; 
-	    } 
-	    if (dir != null && Integer.parseInt(dir.getSR()) > Integer.parseInt(maior.getSR())) { 
-	        maior = dir; 
-	    } 
-	    return maior; 
-	}
-	
-	private BTNode MaiorAI(BTNode node) {
-    if (node == null) {
-        return null;
-    }
-    BTNode maior = node;
-    BTNode esq = MaiorAI(node.getLeft());
-    BTNode dir = MaiorAI(node.getRight());
+	public String analise(LLBT head) {
+        Map<String, List<BTNode>> municipios = new HashMap<>();
+        
+        LLBT current = head;
+        while (current != null) {
+            coletarDados(current.getBT().getRoot(), municipios);
+            current = current.getNext();
+        }
 
-    if (esq != null && Integer.parseInt(esq.getAI()) > Integer.parseInt(maior.getAI())) {
-        maior = esq;
-    }
-    if (dir != null && Integer.parseInt(dir.getAI()) > Integer.parseInt(maior.getAI())) {
-        maior = dir;
-    }
-    return maior;
-}
-    
-    private BTNode MaiorAF(BTNode node) {
-        if (node == null) {
-            return null;
+        StringBuilder resultado = new StringBuilder();
+        for (Map.Entry<String, List<BTNode>> entry : municipios.entrySet()) {
+            String municipio = entry.getKey();
+            List<BTNode> nodes = entry.getValue();
+
+            double mediaEI = calcularMedia(nodes, "EI");
+            double mediaCE = calcularMedia(nodes, "CE");
+            double mediaSR = calcularMedia(nodes, "SR");
+            double mediaAI = calcularMedia(nodes, "AI");
+            double mediaAF = calcularMedia(nodes, "AF");
+            double mediaEM = calcularMedia(nodes, "EM");
+            double mediaEJAFAI = calcularMedia(nodes, "EJAFAI");
+            double mediaEJAFAF = calcularMedia(nodes, "EJAFAF");
+            double mediaEJAEM = calcularMedia(nodes, "EJAEM");
+
+            resultado.append("Município: ").append(municipio).append("\n")
+                    .append("Média de alunos na Educação Infantil: ").append(mediaEI).append("\n")
+                    .append("Média de alunos nas Classes Especiais: ").append(mediaCE).append("\n")
+                    .append("Média de alunos na Sala de Recursos: ").append(mediaSR).append("\n")
+                    .append("Média de alunos nos Anos Iniciais: ").append(mediaAI).append("\n")
+                    .append("Média de alunos nos Anos Finais: ").append(mediaAF).append("\n")
+                    .append("Média de alunos no Ensino Médio: ").append(mediaEM).append("\n")
+                    .append("Média de alunos no EJA Anos Iniciais: ").append(mediaEJAFAI).append("\n")
+                    .append("Média de alunos no EJA Anos Finais: ").append(mediaEJAFAF).append("\n")
+                    .append("Média de alunos no EJA Ensino Médio: ").append(mediaEJAEM).append("\n\n");
         }
-        BTNode maior = node;
-        BTNode esq = MaiorAF(node.getLeft());
-        BTNode dir = MaiorAF(node.getRight());
-    
-        if (esq != null && Integer.parseInt(esq.getAF()) > Integer.parseInt(maior.getAF())) {
-            maior = esq;
-        }
-        if (dir != null && Integer.parseInt(dir.getAF()) > Integer.parseInt(maior.getAF())) {
-            maior = dir;
-        }
-        return maior;
+
+        return resultado.toString();
     }
 
-	private BTNode MaiorEM(BTNode node) {
+    private void coletarDados(BTNode node, Map<String, List<BTNode>> municipios) {
         if (node == null) {
-            return null;
+            return;
         }
-        BTNode maior = node;
-        BTNode esq = MaiorEM(node.getLeft());
-        BTNode dir = MaiorEM(node.getRight());
-    
-        if (esq != null && Integer.parseInt(esq.getEM()) > Integer.parseInt(maior.getEM())) {
-            maior = esq;
-        }
-        if (dir != null && Integer.parseInt(dir.getEM()) > Integer.parseInt(maior.getEM())) {
-            maior = dir;
-        }
-        return maior;
+
+        String municipio = node.getMunicipio();
+        municipios.putIfAbsent(municipio, new ArrayList<>());
+        municipios.get(municipio).add(node);
+
+        coletarDados(node.getLeft(), municipios);
+        coletarDados(node.getRight(), municipios);
     }
 
-	private BTNode MaiorEJAFAI(BTNode node) {
-        if (node == null) {
-            return null;
-        }
-        BTNode maior = node;
-        BTNode esq = MaiorEJAFAI(node.getLeft());
-        BTNode dir = MaiorEJAFAI(node.getRight());
-    
-        if (esq != null && Integer.parseInt(esq.getEJAFAI()) > Integer.parseInt(maior.getEJAFAI())) {
-            maior = esq;
-        }
-        if (dir != null && Integer.parseInt(dir.getEJAFAI()) > Integer.parseInt(maior.getEJAFAI())) {
-            maior = dir;
-        }
-        return maior;
-    }
+    private double calcularMedia(List<BTNode> nodes, String tipo) {
+        int soma = 0;
+        int count = 0;
 
-	private BTNode MaiorEJAFAF(BTNode node) {
-        if (node == null) {
-            return null;
+        for (BTNode node : nodes) {
+            switch (tipo) {
+                case "EI":
+                    soma += Integer.parseInt(node.getEI());
+                    break;
+                case "CE":
+                    soma += Integer.parseInt(node.getCE());
+                    break;
+                case "SR":
+                    soma += Integer.parseInt(node.getSR());
+                    break;
+                case "AI":
+                    soma += Integer.parseInt(node.getAI());
+                    break;
+                case "AF":
+                    soma += Integer.parseInt(node.getAF());
+                    break;
+                case "EM":
+                    soma += Integer.parseInt(node.getEM());
+                    break;
+                case "EJAFAI":
+                    soma += Integer.parseInt(node.getEJAFAI());
+                    break;
+                case "EJAFAF":
+                    soma += Integer.parseInt(node.getEJAFAF());
+                    break;
+                case "EJAEM":
+                    soma += Integer.parseInt(node.getEJAEM());
+                    break;
+            }
+            count++;
         }
-        BTNode maior = node;
-        BTNode esq = MaiorEJAFAF(node.getLeft());
-        BTNode dir = MaiorEJAFAF(node.getRight());
-    
-        if (esq != null && Integer.parseInt(esq.getEJAFAF()) > Integer.parseInt(maior.getEJAFAF())) {
-            maior = esq;
-        }
-        if (dir != null && Integer.parseInt(dir.getEJAFAF()) > Integer.parseInt(maior.getEJAFAF())) {
-            maior = dir;
-        }
-        return maior;
-    }
 
-	private BTNode MaiorEJAEM(BTNode node) {
-        if (node == null) {
-            return null;
-        }
-        BTNode maior = node;
-        BTNode esq = MaiorEJAEM(node.getLeft());
-        BTNode dir = MaiorEJAEM(node.getRight());
-    
-        if (esq != null && Integer.parseInt(esq.getEJAEM()) > Integer.parseInt(maior.getEJAEM())) {
-            maior = esq;
-        }
-        if (dir != null && Integer.parseInt(dir.getEJAEM()) > Integer.parseInt(maior.getEJAEM())) {
-            maior = dir;
-        }
-        return maior;
+        return count == 0 ? 0 : (double) soma / count;
     }
 
 	public void avRemove(){
