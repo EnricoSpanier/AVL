@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String args[]){
+	    LLAVL LLAVLP = new LLAVL();
+	    LLBT LLBTP = new LLBT();
         BinaryTree BTree = new BinaryTree();
         AVLTree AVL = new AVLTree();
         ReadCSV reader = new ReadCSV();
@@ -49,35 +51,91 @@ public class Main {
 				    System.out.println("Caso deseje montar a AVLTree - 1\nCaso de deseje montar a BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
+					    LLAVL LLAVLA = new LLAVL();
 					    long start = System.currentTimeMillis();
-					    
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
+					    LLAVLP.setAvl(AVL);
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
+					    LLAVLP.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLP.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
+					    AVL.avRemove();
 					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
+					    LLAVLA.setNext(AVL);
+					    LLAVLA.setAvl(LLAVLA.getNext());
 					    
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela AVLTree para inserir foi de "+ (end) +" milisegundos");
 					}
 					else if(aux == 2){
+					    LLBT LLBTA = new LLBT();
 					    long start = System.currentTimeMillis();
-					    
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
+					    LLBTP.setBT(BTree);
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
+					    LLBTP.setNext(BTree);
+					    LLBTA.setBT(LLBTP.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
+					    BTree.avRemove();
 					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
+					    LLBTA.setNext(BTree);
+					    LLBTA.setBT(LLBTA.getNext());
 					    
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" milisegundos");
