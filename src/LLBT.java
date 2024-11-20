@@ -17,7 +17,7 @@ public class LLBT {
 		public BinaryTree LLBTgetBt(){
 	    return bt;
 	}
-	public void LLBTsetAvl(BinaryTree bt){
+	public void LLBTsetBT(BinaryTree bt){
 	    this.bt = bt;
 	}
 	
