@@ -17,19 +17,21 @@ public class ReadCSV {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(csvSeparator);
-                int Cod = Integer.valueOf(data[0]);
-                String Nome = data[1];
-                String EI = data[2];
-                String CE = data[3];
-                String SR = data[4];
-                String AI = data[5];
-                String AF = data[6];
-                String EM = data[7];
-                String EJAFAI = data[8];
-                String EJAFAF = data[10];
-                String EJAEM = data[9];
+                String Municipio = data[3]
+                int Cod = Integer.valueOf(data[5]);
+                String Nome = data[8];
+                String EI = data[15];
+                String CE = data[16];
+                String SR = data[17];
+                String AI = data[18];
+                String AF = data[19];
+                String EM = data[20];
+                String EJAFAI = data[21];
+                String EJAFAF = data[23];
+                String EJAEM = data[22];
                 
                 BTNode node = new BTNode(Cod);
+                node.setMunicipio(Municipio)
                 node.setNome(Nome);
                 node.setEI(EI);
                 node.setCE(CE);
@@ -60,19 +62,21 @@ public class ReadCSV {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(csvSeparator);
-                int Cod = Integer.valueOf(data[0]);
-                String Nome = data[1];
-                String EI = data[2];
-                String CE = data[3];
-                String SR = data[4];
-                String AI = data[5];
-                String AF = data[6];
-                String EM = data[7];
-                String EJAFAI = data[8];
-                String EJAFAF = data[10];
-                String EJAEM = data[9];
+                String Municipio = data[3]
+                int Cod = Integer.valueOf(data[5]);
+                String Nome = data[8];
+                String EI = data[15];
+                String CE = data[16];
+                String SR = data[17];
+                String AI = data[18];
+                String AF = data[19];
+                String EM = data[20];
+                String EJAFAI = data[21];
+                String EJAFAF = data[23];
+                String EJAEM = data[22];
                 
                 BTNode node = new BTNode(Cod);
+                node.setMunicipio(Municipio)
                 node.setNome(Nome);
                 node.setEI(EI);
                 node.setCE(CE);
