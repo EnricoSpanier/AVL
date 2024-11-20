@@ -3,14 +3,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ReadCSV {
-    private String csvFile;
     private String csvSeparator = ";";
 
-    public ReadCSV(String csvFile) {
-        this.csvFile = csvFile;
-    }
 
-    public void readAndInsertNodesBynary(BinaryTree binaryTree) {
+    public void readAndInsertNodesBynary(BinaryTree binaryTree,String csvFile) {
         String line;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
@@ -53,7 +49,7 @@ public class ReadCSV {
         }
     }
     
-    public void readAndInsertNodesAvl(AVLTree avl) {
+    public void readAndInsertNodesAvl(AVLTree avl, String csvFile) {
         String line;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {

@@ -4,7 +4,7 @@ public class Main {
 	public static void main(String args[]){
         BinaryTree BTree = new BinaryTree();
         AVLTree AVL = new AVLTree();
-        ReadCSV reader = new ReadCSV("TrabJava.csv");
+        ReadCSV reader = new ReadCSV();
 		Scanner sc = new Scanner(System.in);
 
 		int aux;
@@ -12,8 +12,8 @@ public class Main {
 		int op;
 		int po2=1;		
 		while(po2!=1350){
-			System.out.println("\n0- Inserir valores manualmente na Arvore\n1- Ler csv e colocar na Arvore\n2- mostrar arvore\n3- remover valor"+
-			                    "\n4- apagar arvore\n5- Buscar codigo\n6- Analise estatistica \n7- sair\n");
+			System.out.println("\n1- Inserir valores manualmente na Arvore\n2- Ler csv e colocar na Arvore\n3- mostrar arvore\n4- remover valor"+
+			                    "\n5- apagar arvore\n6- Buscar codigo\n7- Analise estatistica \n8- sair\n");
 			
 			op = readInt(sc, "Escolha uma opção:");
 			
@@ -50,13 +50,35 @@ public class Main {
 					aux = sc.nextInt();
 					if(aux == 1){
 					    long start = System.currentTimeMillis();
-					    reader.readAndInsertNodesAvl(AVL);
+					    
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesAvl(AVL, "Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
+					    
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela AVLTree para inserir foi de "+ (end) +" milisegundos");
 					}
 					else if(aux == 2){
 					    long start = System.currentTimeMillis();
-					    reader.readAndInsertNodesBynary(BTree);
+					    
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
+					    reader.readAndInsertNodesBynary(BTree, "Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
+					    
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" milisegundos");
 					}
