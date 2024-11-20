@@ -30,7 +30,7 @@ public class AVLTree extends BinaryTree {
 		}
 	}
 
-	    public void insertm(int data, BTNode dados) {
+	 public void insertm(int data, BTNode dados) {
         root = insertm(root, null, data, dados);
         // Verificação após a inserção
         if (root.getParent() != null) {
@@ -181,8 +181,6 @@ public class AVLTree extends BinaryTree {
 		avRemoveAux(root);
 		root = null;
 	}
-
-
 
 	public void avRemoveAux(BTNode node) {
 		if(node.getLeft() != null) {
