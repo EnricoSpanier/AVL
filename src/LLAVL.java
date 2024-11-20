@@ -15,19 +15,19 @@ public class LLAVL {
         this.next = next;
     }
     
-    public AVLTree LLAVLgetAvl() {
+    public AVLTree getAvl() {
         return avl;
     }
 
-    public void LLAVLsetAvl(AVLTree avl) {
+    public void setAvl(AVLTree avl) {
         this.avl = avl;
     }
     
-    public AVLTree LLAVLgetNext() {
+    public AVLTree getNext() {
         return next;
     }
 
-    public void LLAVLsetNext(AVLTree next) {
+    public void setNext(AVLTree next) {
         this.next = next;
     }
 }
