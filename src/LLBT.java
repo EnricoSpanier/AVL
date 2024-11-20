@@ -14,17 +14,17 @@ public class LLBT {
 	    this.next = next;
 	}
 	
-		public BinaryTree LLBTgetBt(){
+		public BinaryTree getBt(){
 	    return bt;
 	}
-	public void LLBTsetBT(BinaryTree bt){
+	public void setBT(BinaryTree bt){
 	    this.bt = bt;
 	}
 	
-	public BinaryTree LLBTgetNext(){
+	public BinaryTree getNext(){
 	    return next;
 	}
-	public void LLBTsetNext(BinaryTree next){
+	public void setNext(BinaryTree next){
 	    this.next = next;
 	}
 }
