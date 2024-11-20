@@ -1,6 +1,7 @@
 public class BTNode {
     protected int Cod;
     protected String Nome;
+    protected String Municipio;
     protected String EI;
     protected String CE;
     protected String SR;
@@ -101,6 +102,14 @@ public class BTNode {
     
     public String getEM() {
         return EM;
+    }
+    
+        public void setMunicipio(String data) {
+        this.Municipio = data;
+    }
+    
+    public String getMunicipio() {
+        return Municipio;
     }
 
     public void setEM(String data) {
