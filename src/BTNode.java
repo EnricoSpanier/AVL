@@ -27,7 +27,7 @@ public class BTNode {
     
     public BTNode(int Cod, BTNode parent) {
         this.Cod = Cod;
-        this.Nome = Nome;
+        this.Nome = "";
         this.EI = "";
         this.CE = "";
         this.SR = "";

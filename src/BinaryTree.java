@@ -1,6 +1,7 @@
 // imports para a fila usada na levelOrderTraversal(BTNode node). 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class BinaryTree {
 
@@ -87,14 +88,134 @@ public class BinaryTree {
         int diff = Integer.compare(data, node.getCod());
         if (diff < 0) {
             node.setLeft(insert(node.getLeft(), node, data,dados));
-        } else if (diff > 0) {
+        } else{
             node.setRight(insert(node.getRight(), node, data,dados));
-        } else {
-            node.setRep(1);
-        }
+        } 
         return node;
     } 
 	
+    public void insertm(int data, BTNode dados) {
+        root = insertm(root, null, data, dados);
+        // Verificação após a inserção
+        if (root.getParent() != null) {
+            root = root.getParent();
+        }
+        root.setParent(null); // Garantir que o parent do root seja null
+    }
+
+    private BTNode insertm(BTNode node, BTNode parent, int data, BTNode dados) {
+        Scanner sa = new Scanner(System.in);
+
+        System.out.println("Insira o Nome da escola: ");
+        String nome = sa.nextLine();
+        while (nome.isEmpty()) {
+            System.out.println("Valor inválido! Tente novamente");
+            System.out.println("Insira o Nome da escola: ");
+            nome = sa.next();
+        }
+        dados.setNome(nome);
+
+        System.out.println("Insira o número de alunos no Ensino Infantil na escola: ");
+        int EI = sa.nextInt();
+        while (EI < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos no Ensino Infantil na escola: ");
+            EI = sa.nextInt();
+        }
+        dados.setEI(String.valueOf(EI));
+        
+        System.out.println("Insira o número de alunos na Classe Especial na escola: ");
+        int CE = sa.nextInt();
+        while (CE < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos na Classe Especial na escola: ");
+            CE = sa.nextInt();
+        }
+        dados.setCE(String.valueOf(CE));
+        
+        System.out.println("Insira o número de alunos na Sala de Recursos na escola: ");
+        int SR = sa.nextInt();
+        while (SR < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos na Sala de Recursos na escola: ");
+            SR = sa.nextInt();
+        }
+        dados.setSR(String.valueOf(SR));
+        
+        System.out.println("Insira o número de alunos no Fundamental Anos Iniciais na escola: ");
+        int AI = sa.nextInt();
+        while (AI < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos no Fundamental Anos Iniciais na escola: ");
+            AI = sa.nextInt();
+        }
+        dados.setAI(String.valueOf(AI));
+        
+        System.out.println("Insira o número de alunos no Fundamental Anos Finais na escola: ");
+        int AF = sa.nextInt();
+        while (AF < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos no Fundamental Anos Finais na escola: ");
+            AF = sa.nextInt();
+        }
+        dados.setAF(String.valueOf(AF));
+        
+        System.out.println("Insira o número de alunos no Ensino Médio na escola: ");
+        int EM = sa.nextInt();
+        while (EM < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos no Ensino Médio na escola: ");
+            EM = sa.nextInt();
+        }
+        dados.setEM(String.valueOf(EM));
+        
+        System.out.println("Insira o número de alunos no EJA - Fundamental Anos Iniciais na escola: ");
+        int EJAFAI = sa.nextInt();
+        while (EJAFAI < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos no EJA - Fundamental Anos Iniciais na escola: ");
+            EJAFAI = sa.nextInt();
+        }
+        dados.setEJAFAI(String.valueOf(EJAFAI));
+        
+        System.out.println("Insira o número de alunos no EJA - Fundamental Anos Finais na escola: ");
+        int EJAFAF = sa.nextInt();
+        while (EJAFAF < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos no EJA - Fundamental Anos Finais na escola: ");
+            EJAFAF = sa.nextInt();
+        }
+        dados.setEJAFAF(String.valueOf(EJAFAF));
+        
+        System.out.println("Insira o número de alunos no EJA - Ensino Médio na escola: ");
+        int EJAEM = sa.nextInt();
+        while (EJAEM < 0) {
+            System.out.println("Valor inválido! Tente novamente.");
+            System.out.println("Insira o número de alunos no EJA - Ensino Médio na escola: ");
+            EJAEM = sa.nextInt();
+        }
+        dados.setEJAEM(String.valueOf(EJAEM));
+
+
+        sa.close();
+
+        if (node == null) {
+            dados.setParent(parent);
+            return dados;
+        }
+
+        int diff = Integer.compare(data, node.getCod());
+        if (diff < 0) {
+            node.setLeft(insertm(node.getLeft(), node, data, dados));
+        } else if (diff > 0) {
+            node.setRight(insertm(node.getRight(), node, data, dados));
+        } else {
+            node.setRep(1);
+        }
+        
+        return node;
+    }
+
     public void remove(int data) {
         if (search(root, data) != null) {
             System.out.println("\nValor " + data + " foi removido!\n");
@@ -386,8 +507,6 @@ public class BinaryTree {
 		// Pré-ordem = percurso NLR.
 		System.out.println(
 			    "Código da escola - " + node.getCod() +
-			    ", getDegree(): " + node.getDegree() +
-			    ", getHeight(): " + node.getHeight() +
 			    ", parent => {" + (node.getParent() != null ? node.getParent().getCod() : "null") + "}" +
 			    ", right => {" + (node.getRight() != null ? node.getRight().getCod() : "null") + "}" +
 			    ", left => {" + (node.getLeft() != null ? node.getLeft().getCod() : "null") + "}"
