@@ -94,21 +94,6 @@ public class BinaryTree {
         }
         return node;
     } 
-    
-    public void remove(int data) {
-        if(search(root,data)!= null){
-            System.out.println("\nValor "+ data +" foi removido!\n");
-        }
-        root = remove(root,data);
-        // Verificação após a remoção
-        if (root != null && root.getParent() != null) {
-            root = root.getParent();
-        }
-        if (root!= null){
-            root.setParent(null);
-        }
-        
-    }
 	
     public void remove(int data) {
         if (search(root, data) != null) {
@@ -126,7 +111,7 @@ public class BinaryTree {
         }
     }
 
-    public BTNode remove(BTNode node, int data) {
+    private BTNode remove(BTNode node, int data) {
         if (node == null) {
             return node; // Caso a árvore esteja vazia ou o nó não encontrado
         }
