@@ -322,7 +322,7 @@ public class Main {
 							long start = System.currentTimeMillis();
 							try {
 								AVLTree avlTree = new AVLTree();
-								avlTree.analise(head, "resultado.csv", "resultado.txt");
+								avlTree.analise(head, "resultadoAVL.csv", "resultadoAVL.txt");
 							} catch (OutOfMemoryError e) {
 								System.out.println("Erro de memória: " + e.getMessage());
 							}
@@ -337,7 +337,7 @@ public class Main {
 							long start = System.currentTimeMillis();
 							try {
 								BinaryTree BTree = new BinaryTree();
-								BTree.analise(headB, "resultado.csv", "resultado.txt");
+								BTree.analise(headB, "resultadoBT.csv", "resultadoBT.txt");
 							} catch (OutOfMemoryError e) {
 								System.out.println("Erro de memória: " + e.getMessage());
 							}
