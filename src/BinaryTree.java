@@ -1,6 +1,8 @@
 // imports para a fila usada na levelOrderTraversal(BTNode node). 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -281,97 +283,126 @@ public class BinaryTree {
     return node;
     }
 
-	public String analise(LLBT head) {
-        Map<String, List<BTNode>> Distritos = new HashMap<>();
+	public void analise(LLBT head, String csvFilePath, String txtFilePath) {
+        Map<String, Map<String, List<BTNode>>> DistritoPorAnoSemestre = new LinkedHashMap<>();
         
         LLBT current = head;
+        int semestre = 1;
+        int ano = 2019; // Ajuste o ano inicial conforme necessário
         while (current != null) {
-            coletarDados(current.getBT().getRoot(), Distritos);
+            Map<String, List<BTNode>> Distrito = new LinkedHashMap<>();
+            coletarDados(current.getBT().getRoot(), Distrito);
+            String chaveAnoSemestre = ano + ": Semestre " + semestre;
+            DistritoPorAnoSemestre.put(chaveAnoSemestre, Distrito);
             current = current.getNext();
+            semestre++;
+            if (semestre > 2) {
+                semestre = 1;
+                ano++;
+            }
         }
 
-        StringBuilder resultado = new StringBuilder();
-        for (Map.Entry<String, List<BTNode>> entry : Distritos.entrySet()) {
-            String Distrito = entry.getKey();
-            List<BTNode> nodes = entry.getValue();
+        StringBuilder resultadoTxt = new StringBuilder();
+        StringBuilder resultadoCsv = new StringBuilder();
+        resultadoCsv.append("Distrito,Ano Semestre,EI,CE,SR,AI,AF,EM,EJAFAI,EJAFAF,EJAEM\n");
 
-            double mediaEI = calcularMedia(nodes, "EI");
-            double mediaCE = calcularMedia(nodes, "CE");
-            double mediaSR = calcularMedia(nodes, "SR");
-            double mediaAI = calcularMedia(nodes, "AI");
-            double mediaAF = calcularMedia(nodes, "AF");
-            double mediaEM = calcularMedia(nodes, "EM");
-            double mediaEJAFAI = calcularMedia(nodes, "EJAFAI");
-            double mediaEJAFAF = calcularMedia(nodes, "EJAFAF");
-            double mediaEJAEM = calcularMedia(nodes, "EJAEM");
+       for (Map.Entry<String, Map<String, List<BTNode>>> entryAnoSemestre : DistritoPorAnoSemestre.entrySet()) {
+            String anoSemestreKey = entryAnoSemestre.getKey();
+            Map<String, List<BTNode>> Distrito = entryAnoSemestre.getValue();
 
-            resultado.append("Distrito: ").append(Distrito).append("\n")
-                    .append("Média de alunos na Educação Infantil: ").append(mediaEI).append("\n")
-                    .append("Média de alunos nas Classes Especiais: ").append(mediaCE).append("\n")
-                    .append("Média de alunos na Sala de Recursos: ").append(mediaSR).append("\n")
-                    .append("Média de alunos nos Anos Iniciais: ").append(mediaAI).append("\n")
-                    .append("Média de alunos nos Anos Finais: ").append(mediaAF).append("\n")
-                    .append("Média de alunos no Ensino Médio: ").append(mediaEM).append("\n")
-                    .append("Média de alunos no EJA Anos Iniciais: ").append(mediaEJAFAI).append("\n")
-                    .append("Média de alunos no EJA Anos Finais: ").append(mediaEJAFAF).append("\n")
-                    .append("Média de alunos no EJA Ensino Médio: ").append(mediaEJAEM).append("\n\n");
+            for (Map.Entry<String, List<BTNode>> entryDistrito : Distrito.entrySet()) {
+                String distritoKey = entryDistrito.getKey();
+                List<BTNode> nodes = entryDistrito.getValue();
+            
+                double mediaEI = calcularMedia(nodes, "EI");
+                double mediaCE = calcularMedia(nodes, "CE");
+                double mediaSR = calcularMedia(nodes, "SR");
+                double mediaAI = calcularMedia(nodes, "AI");
+                double mediaAF = calcularMedia(nodes, "AF");
+                double mediaEM = calcularMedia(nodes, "EM");
+                double mediaEJAFAI = calcularMedia(nodes, "EJAFAI");
+                double mediaEJAFAF = calcularMedia(nodes, "EJAFAF");
+                double mediaEJAEM = calcularMedia(nodes, "EJAEM");
+
+                resultadoTxt.append("Distrito: ").append(distritoKey).append(" Ano: ").append(anoSemestreKey).append("\n")
+                        .append("Média de alunos na Educação Infantil: ").append(mediaEI).append("\n")
+                        .append("Média de alunos nas Classes Especiais: ").append(mediaCE).append("\n")
+                        .append("Média de alunos na Sala de Recursos: ").append(mediaSR).append("\n")
+                        .append("Média de alunos nos Anos Iniciais: ").append(mediaAI).append("\n")
+                        .append("Média de alunos nos Anos Finais: ").append(mediaAF).append("\n")
+                        .append("Média de alunos no Ensino Médio: ").append(mediaEM).append("\n")
+                        .append("Média de alunos no EJA Anos Iniciais: ").append(mediaEJAFAI).append("\n")
+                        .append("Média de alunos no EJA Anos Finais: ").append(mediaEJAFAF).append("\n")
+                        .append("Média de alunos no EJA Ensino Médio: ").append(mediaEJAEM).append("\n\n");
+
+                resultadoCsv.append(distritoKey).append(",").append(anoSemestreKey).append(",")
+                        .append(mediaEI).append(",").append(mediaCE).append(",").append(mediaSR).append(",")
+                        .append(mediaAI).append(",").append(mediaAF).append(",").append(mediaEM).append(",")
+                        .append(mediaEJAFAI).append(",").append(mediaEJAFAF).append(",").append(mediaEJAEM).append("\n");
+            }
         }
 
-        return resultado.toString();
+        try (FileWriter txtWriter = new FileWriter(txtFilePath);
+             FileWriter csvWriter = new FileWriter(csvFilePath)) {
+            txtWriter.write(resultadoTxt.toString());
+            csvWriter.write(resultadoCsv.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void coletarDados(BTNode node, Map<String, List<BTNode>> Distritos) {
+    private void coletarDados(BTNode node, Map<String, List<BTNode>> Distrito) {
         if (node == null) {
             return;
         }
 
-        String Distrito = node.getDistrito();
-        Distritos.putIfAbsent(Distrito, new ArrayList<>());
-        Distritos.get(Distrito).add(node);
+        String distrito = node.getDistrito();
+        Distrito.putIfAbsent(distrito, new ArrayList<>());
+        Distrito.get(distrito).add(node);
 
-        coletarDados(node.getLeft(), Distritos);
-        coletarDados(node.getRight(), Distritos);
+        coletarDados(node.getLeft(), Distrito);
+        coletarDados(node.getRight(), Distrito);
     }
-
-    private double calcularMedia(List<BTNode> nodes, String tipo) {
-        int soma = 0;
-        int count = 0;
-
-        for (BTNode node : nodes) {
-            switch (tipo) {
-                case "EI":
-                    soma += Integer.parseInt(node.getEI());
-                    break;
-                case "CE":
-                    soma += Integer.parseInt(node.getCE());
-                    break;
-                case "SR":
-                    soma += Integer.parseInt(node.getSR());
-                    break;
-                case "AI":
-                    soma += Integer.parseInt(node.getAI());
-                    break;
-                case "AF":
-                    soma += Integer.parseInt(node.getAF());
-                    break;
-                case "EM":
-                    soma += Integer.parseInt(node.getEM());
-                    break;
-                case "EJAFAI":
-                    soma += Integer.parseInt(node.getEJAFAI());
-                    break;
-                case "EJAFAF":
-                    soma += Integer.parseInt(node.getEJAFAF());
-                    break;
-                case "EJAEM":
-                    soma += Integer.parseInt(node.getEJAEM());
-                    break;
-            }
-            count++;
-        }
-
-        return count == 0 ? 0 : (double) soma / count;
-    }
+	
+	private double calcularMedia(List<BTNode> nodes, String tipo) {
+		int soma = 0;
+		int count = 0;
+	
+		for (BTNode node : nodes) {
+			switch (tipo) {
+				case "EI":
+					soma += Integer.parseInt(node.getEI());
+					break;
+				case "CE":
+					soma += Integer.parseInt(node.getCE());
+					break;
+				case "SR":
+					soma += Integer.parseInt(node.getSR());
+					break;
+				case "AI":
+					soma += Integer.parseInt(node.getAI());
+					break;
+				case "AF":
+					soma += Integer.parseInt(node.getAF());
+					break;
+				case "EM":
+					soma += Integer.parseInt(node.getEM());
+					break;
+				case "EJAFAI":
+					soma += Integer.parseInt(node.getEJAFAI());
+					break;
+				case "EJAFAF":
+					soma += Integer.parseInt(node.getEJAFAF());
+					break;
+				case "EJAEM":
+					soma += Integer.parseInt(node.getEJAEM());
+					break;
+			}
+			count++;
+		}
+	
+		return count == 0 ? 0 : (double) soma / count;
+	}
 
 	public void avRemove(){
         avRemoveAux(root);

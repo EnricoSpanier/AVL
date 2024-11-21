@@ -4,7 +4,6 @@ public class Main {
 	public static void main(String args[]){
 	    LLAVL head = new LLAVL();;
 	    LLBT headB = new LLBT();
-        BinaryTree BTree = new BinaryTree();
         ReadCSV reader = new ReadCSV();
 		Scanner sc = new Scanner(System.in);
 
@@ -37,7 +36,7 @@ public class Main {
 					    System.out.println("Insira o código da escola que deseja inserir");
 					    int cod = sc.nextInt();
 					    BTNode node = new BTNode();
-					   	BTree.insertm(cod,node);
+					   	headB.getBT().insertm(cod,node);
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de "+ (end) +" milisegundos");
 					}
@@ -129,58 +128,70 @@ public class Main {
 
 					}
 					else if(aux == 2){
-        				LLBT current = headB;
+						LLBT current = headB;
 
 						long start = System.currentTimeMillis();
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
-					    current.setBT(BTree);
-					    BTree.avRemove();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Primeiro semestre de 2019
+						BinaryTree Btree = new BinaryTree();
+						reader.readAndInsertNodesBynary(Btree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_1°SEMESTRE.csv");
+						current.setBT(Btree);
+						
+						// Segundo semestre de 2019
+						BinaryTree Btree2 = new BinaryTree();
+						reader.readAndInsertNodesBynary(Btree2, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2019_2°SEMESTRE.csv");
+						current.setNext(new LLBT(Btree2));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Primeiro semestre de 2020
+						BinaryTree Btree3 = new BinaryTree();
+						reader.readAndInsertNodesBynary(Btree3, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_1°SEMESTRE.csv");
+						current.setNext(new LLBT(Btree2));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Segundo semestre de 2020
+						BinaryTree Btree4 = new BinaryTree();
+						reader.readAndInsertNodesBynary(Btree4, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2020_2°SEMESTRE.csv");
+						current.setNext(new LLBT(Btree2));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Primeiro semestre de 2021
+						BinaryTree Btree5 = new BinaryTree();
+						reader.readAndInsertNodesBynary(Btree5, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_1°SEMESTRE.csv");
+						current.setNext(new LLBT(Btree2));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Segundo semestre de 2021
+						BinaryTree Btree6 = new BinaryTree();
+						reader.readAndInsertNodesBynary(Btree6, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2021_2°SEMESTRE.csv");
+						current.setNext(new LLBT(Btree2));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Primeiro semestre de 2022
+						BinaryTree Btree7 = new BinaryTree();
+						reader.readAndInsertNodesBynary(Btree7, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_1°SEMESTRE.csv");
+					    current.setNext(new LLBT(Btree2));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Segundo semestre de 2022
+						BinaryTree Btree8 = new BinaryTree();
+					    reader.readAndInsertNodesBynary(Btree8, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2022_2°SEMESTRE.csv");
+					    current.setNext(new LLBT(Btree2));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    BTree.avRemove();
+						// Primeiro semestre de 2023
+						BinaryTree Btree9 = new BinaryTree();
+					    reader.readAndInsertNodesBynary(Btree9, "src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_1°SEMESTRE.csv");
+					    current.setNext(new LLBT(Btree2));
+						current = current.getNext();
+					
+						// Segundo semestre de 2023
+						BinaryTree Btree10 = new BinaryTree();
+					    reader.readAndInsertNodesBynary(Btree10,"src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
+						current.setNext(new LLBT(Btree10));
+						current = current.getNext();
 
-					    reader.readAndInsertNodesBynary(BTree,"src\\csv\\Quantidade de alunos por tipo de ensino da rede estadual_2023_2°SEMESTRE.csv");
-					    current.setNext(new LLBT(BTree));
-        				current = current.getNext();
-					    
-					    long end = System.currentTimeMillis()-start;
+						long end = System.currentTimeMillis() - start;
 					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" milisegundos");
 					}
 					else{
@@ -204,7 +215,7 @@ public class Main {
 					    long start = System.currentTimeMillis();
 					    
 					    System.out.println("-=-=-=-=-=-=-=-=-=-=-Pre-order Arvore Binaria-=-=-=-=-=-=-=-=-=-=--=-=-");
-					    BTree.preOrderTraversal();
+						headB.getBT().preOrderTraversal();
 					    
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" milisegundos");
@@ -233,7 +244,7 @@ public class Main {
 				        aux = sc.nextInt();
 					    long start = System.currentTimeMillis();
 					    
-					    BTree.remove(aux);
+						headB.getBT().remove(aux);
 				        
 				        long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado pela BinaryTree para Remover foi de "+ (end) +" milisegundos");
@@ -257,7 +268,7 @@ public class Main {
 				    if(aux == 2){
 					    long start = System.currentTimeMillis();
 					    
-					    BTree.avRemove();
+					    headB.setNull();
 				        
 				        long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado para apagar a BinaryTree foi de "+ (end) +" milisegundos");
@@ -288,7 +299,7 @@ public class Main {
 				        System.out.println("Qual o código da escola deseja Procurar? ");
 				        aux = sc.nextInt();
 					    long start = System.currentTimeMillis();
-					    busca = BTree.search(aux);
+					    busca = headB.getBT().search(aux);
 					    long end = System.currentTimeMillis()-start;
 					    System.out.println("o tempo usado para buscar na BinaryTree foi de "+ (end) +" milisegundos");
 					    if(busca!= null){
@@ -325,7 +336,8 @@ public class Main {
 						if (headB != null) {
 							long start = System.currentTimeMillis();
 							try {
-								System.out.println(BTree.analise(headB));
+								BinaryTree BTree = new BinaryTree();
+								BTree.analise(headB, "resultado.csv", "resultado.txt");
 							} catch (OutOfMemoryError e) {
 								System.out.println("Erro de memória: " + e.getMessage());
 							}
@@ -351,13 +363,13 @@ public class Main {
 					        break;
 				        case 2:
 				            po2=1350;
-				            BTree.avRemove();
+				            headB.setNull();
 				            sc.close();
 					        break;
 					    case 3:
 					        po2=1350;
 							head.setNull();
-					        BTree.avRemove();
+							headB.setNull();
 					        sc.close();
 					        break;
 					    default:

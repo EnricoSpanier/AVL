@@ -1,7 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -184,13 +184,13 @@ public class AVLTree extends BinaryTree {
 	}
 
 	public void analise(LLAVL head, String csvFilePath, String txtFilePath) {
-        Map<String, Map<String, List<BTNode>>> DistritoPorAnoSemestre = new HashMap<>();
-        
+        Map<String, Map<String, List<BTNode>>> DistritoPorAnoSemestre = new LinkedHashMap<>();
+
         LLAVL current = head;
         int semestre = 1;
         int ano = 2019; // Ajuste o ano inicial conforme necessário
         while (current != null) {
-            Map<String, List<BTNode>> Distrito = new HashMap<>();
+            Map<String, List<BTNode>> Distrito = new LinkedHashMap<>();
             coletarDados(current.getAvl().getRoot(), Distrito);
             String chaveAnoSemestre = ano + ": Semestre " + semestre;
             DistritoPorAnoSemestre.put(chaveAnoSemestre, Distrito);

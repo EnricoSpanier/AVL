@@ -30,4 +30,11 @@ public class LLBT {
     public void setNext(LLBT next) {
         this.next = next;
     }
+    
+    public void setNull() {
+        while(this.getNext() != null) {
+            bt.avRemove();
+            this.next = this.getNext();
+        }
+    }
 }
