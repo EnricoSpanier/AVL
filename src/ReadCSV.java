@@ -17,7 +17,7 @@ public class ReadCSV {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(csvSeparator);
-                String Municipio = data[3];
+                String Distrito = data[1];
                 int Cod = Integer.valueOf(data[5]);
                 String Nome = data[8];
                 String EI = data[15];
@@ -31,7 +31,7 @@ public class ReadCSV {
                 String EJAEM = data[22];
                 
                 BTNode node = new BTNode(Cod);
-                node.setMunicipio(Municipio);
+                node.setDistrito(Distrito);
                 node.setNome(Nome);
                 node.setEI(EI);
                 node.setCE(CE);
@@ -62,7 +62,7 @@ public class ReadCSV {
 
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(csvSeparator);
-                String Municipio = data[3];
+                String Distrito = data[1];
                 int Cod = Integer.valueOf(data[5]);
                 String Nome = data[8];
                 String EI = data[15];
@@ -76,7 +76,7 @@ public class ReadCSV {
                 String EJAEM = data[22];
                 
                 BTNode node = new BTNode(Cod);
-                node.setMunicipio(Municipio);
+                node.setDistrito(Distrito);
                 node.setNome(Nome);
                 node.setEI(EI);
                 node.setCE(CE);

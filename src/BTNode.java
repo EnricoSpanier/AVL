@@ -1,7 +1,7 @@
 public class BTNode {
     protected int Cod;
     protected String Nome;
-    protected String Municipio;
+    protected String Distrito;
     protected String EI;
     protected String CE;
     protected String SR;
@@ -28,6 +28,7 @@ public class BTNode {
     public BTNode(int Cod, BTNode parent) {
         this.Cod = Cod;
         this.Nome = "";
+        this.Distrito = "";
         this.EI = "";
         this.CE = "";
         this.SR = "";
@@ -104,12 +105,12 @@ public class BTNode {
         return EM;
     }
     
-        public void setMunicipio(String data) {
-        this.Municipio = data;
+        public void setDistrito(String data) {
+        this.Distrito = data;
     }
     
-    public String getMunicipio() {
-        return Municipio;
+    public String getDistrito() {
+        return Distrito;
     }
 
     public void setEM(String data) {

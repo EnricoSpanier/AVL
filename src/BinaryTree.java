@@ -282,17 +282,17 @@ public class BinaryTree {
     }
 
 	public String analise(LLBT head) {
-        Map<String, List<BTNode>> municipios = new HashMap<>();
+        Map<String, List<BTNode>> Distritos = new HashMap<>();
         
         LLBT current = head;
         while (current != null) {
-            coletarDados(current.getBT().getRoot(), municipios);
+            coletarDados(current.getBT().getRoot(), Distritos);
             current = current.getNext();
         }
 
         StringBuilder resultado = new StringBuilder();
-        for (Map.Entry<String, List<BTNode>> entry : municipios.entrySet()) {
-            String municipio = entry.getKey();
+        for (Map.Entry<String, List<BTNode>> entry : Distritos.entrySet()) {
+            String Distrito = entry.getKey();
             List<BTNode> nodes = entry.getValue();
 
             double mediaEI = calcularMedia(nodes, "EI");
@@ -305,7 +305,7 @@ public class BinaryTree {
             double mediaEJAFAF = calcularMedia(nodes, "EJAFAF");
             double mediaEJAEM = calcularMedia(nodes, "EJAEM");
 
-            resultado.append("Município: ").append(municipio).append("\n")
+            resultado.append("Distrito: ").append(Distrito).append("\n")
                     .append("Média de alunos na Educação Infantil: ").append(mediaEI).append("\n")
                     .append("Média de alunos nas Classes Especiais: ").append(mediaCE).append("\n")
                     .append("Média de alunos na Sala de Recursos: ").append(mediaSR).append("\n")
@@ -320,17 +320,17 @@ public class BinaryTree {
         return resultado.toString();
     }
 
-    private void coletarDados(BTNode node, Map<String, List<BTNode>> municipios) {
+    private void coletarDados(BTNode node, Map<String, List<BTNode>> Distritos) {
         if (node == null) {
             return;
         }
 
-        String municipio = node.getMunicipio();
-        municipios.putIfAbsent(municipio, new ArrayList<>());
-        municipios.get(municipio).add(node);
+        String Distrito = node.getDistrito();
+        Distritos.putIfAbsent(Distrito, new ArrayList<>());
+        Distritos.get(Distrito).add(node);
 
-        coletarDados(node.getLeft(), municipios);
-        coletarDados(node.getRight(), municipios);
+        coletarDados(node.getLeft(), Distritos);
+        coletarDados(node.getRight(), Distritos);
     }
 
     private double calcularMedia(List<BTNode> nodes, String tipo) {

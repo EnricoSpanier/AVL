@@ -30,4 +30,12 @@ public class LLAVL {
     public void setNext(LLAVL next) {
         this.next = next;
     }
+
+    public void setNull() {
+        while(this.getNext() != null) {
+            avl.avRemove();
+            this.next = this.getNext();
+        }
+    }
+
 }
