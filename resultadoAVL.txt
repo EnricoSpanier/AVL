@@ -726,14 +726,14 @@ Média de alunos no EJA Ensino Médio: 4.901960784313726
 
 Distrito: JAU Ano: 2019: Semestre 1
 Média de alunos na Educação Infantil: 0.0
-Média de alunos nas Classes Especiais: 5.686274509803922
+Média de alunos nas Classes Especiais: 5.8
 Média de alunos na Sala de Recursos: 0.0
-Média de alunos nos Anos Iniciais: 8.372549019607844
-Média de alunos nos Anos Finais: 260.45098039215685
-Média de alunos no Ensino Médio: 208.49019607843138
+Média de alunos nos Anos Iniciais: 8.54
+Média de alunos nos Anos Finais: 265.66
+Média de alunos no Ensino Médio: 212.66
 Média de alunos no EJA Anos Iniciais: 0.0
-Média de alunos no EJA Anos Finais: 19.176470588235293
-Média de alunos no EJA Ensino Médio: 4.529411764705882
+Média de alunos no EJA Anos Finais: 19.56
+Média de alunos no EJA Ensino Médio: 4.62
 
 Distrito: BARRETOS Ano: 2019: Semestre 1
 Média de alunos na Educação Infantil: 0.0
