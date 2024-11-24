@@ -18,27 +18,27 @@ public class Main {
 			op = readInt(sc, "Escolha uma opção:");
 			
 			switch(op){
-			    
 			    case 1:
 			        System.out.println("Caso deseje montar a AVLTree - 1\nCaso de deseje montar a BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
-					    long start = System.currentTimeMillis();
+
+					    long start = System.nanoTime();
 					    System.out.println("Insira o código da escola que deseja inserir");
 					    int cod = sc.nextInt();
 					    BTNode node = new BTNode(cod);
 						head.getAvl().insertm(cod,node);
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de "+ (end) +" milisegundos");
+					    long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de "+ (end) +" nanosegundos");
 					}
 					else if(aux == 2){
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    System.out.println("Insira o código da escola que deseja inserir");
 					    int cod = sc.nextInt();
 					    BTNode node = new BTNode();
 					   	headB.getBT().insertm(cod,node);
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de "+ (end) +" milisegundos");
+					    long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de "+ (end) +" nanosegundos");
 					}
 					else{
 					    System.out.println("Opção invalida!!");
@@ -52,7 +52,7 @@ public class Main {
 					    
 						LLAVL current = head;
 
-						long start = System.currentTimeMillis();
+						long start = System.nanoTime();
 
 						// Primeiro semestre de 2019
 						AVLTree AVL = new AVLTree();
@@ -123,14 +123,14 @@ public class Main {
 						current = current.getNext();
 						//AVL10.avRemove();
 
-						long end = System.currentTimeMillis() - start;
-						System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de " + end + " milisegundos");
+						long end = System.nanoTime() - start;
+						System.out.println("o tempo usado pela AVLTree para inserir manualmente foi de " + end + " nanosegundos");
 
 					}
 					else if(aux == 2){
 						LLBT current = headB;
 
-						long start = System.currentTimeMillis();
+						long start = System.nanoTime();
 
 						// Primeiro semestre de 2019
 						BinaryTree Btree = new BinaryTree();
@@ -191,8 +191,8 @@ public class Main {
 						current.setNext(new LLBT(Btree10));
 						current = current.getNext();
 
-						long end = System.currentTimeMillis() - start;
-					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" milisegundos");
+						long end = System.nanoTime() - start;
+					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" nanosegundos");
 					}
 					else{
 					    System.out.println("Opção invalida!!");
@@ -203,22 +203,22 @@ public class Main {
 				    System.out.println("Caso deseje mostrar a AVLTree - 1\nCaso de deseje mostrar a BinaryTree - 2");
 					aux = sc.nextInt();
 					if(aux == 1){
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    
 					    System.out.println("-=-=-=-=-=-=-=-=-=-=-Pre-order Arvore AVL-=-=-=-=-=-=-=-=-=-=--=-=-");
 						head.getAvl().preOrderTraversal();
 					    
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado pela AVLTree para mostrar foi de "+ (end) +" milisegundos");
+					    long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado pela AVLTree para mostrar foi de "+ (end) +" nanosegundos");
 					}
 					else if(aux == 2){
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    
 					    System.out.println("-=-=-=-=-=-=-=-=-=-=-Pre-order Arvore Binaria-=-=-=-=-=-=-=-=-=-=--=-=-");
 						headB.getBT().preOrderTraversal();
 					    
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" milisegundos");
+					    long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado pela BinaryTree para inserir foi de "+ (end) +" nanosegundos");
 					}
 					else{
 					    System.out.println("Opção invalida!!");
@@ -232,22 +232,22 @@ public class Main {
 				    if(aux == 1){
 				        System.out.println("Qual o código da escola deseja remover");
 				        aux = sc.nextInt();
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    
 					    head.getAvl().remove(aux);
 				        
-				        long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado pela AVLTree para Remover foi de "+ (end) +" milisegundos");
+				        long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado pela AVLTree para Remover foi de "+ (end) +" nanosegundos");
 				    }
 					else if(aux == 2){
 					   System.out.println("Qual o código da escola deseja remover");
 				        aux = sc.nextInt();
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    
 						headB.getBT().remove(aux);
 				        
-				        long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado pela BinaryTree para Remover foi de "+ (end) +" milisegundos");
+				        long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado pela BinaryTree para Remover foi de "+ (end) +" nanosegundos");
 					}
 					else{
 					    System.out.println("Opção invalida!!");
@@ -258,20 +258,20 @@ public class Main {
 				    System.out.println("Caso deseje apagar a AVLTree - 1\nCaso de deseje apagar a BinaryTree - 2");
 					aux = sc.nextInt();
 				    if(aux == 1){
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    
 					    head.setNull();
 				        
-				        long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado para apagar a AVL foi de "+ (end) +" milisegundos");
+				        long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado para apagar a AVL foi de "+ (end) +" nanosegundos");
 				    }
 				    if(aux == 2){
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    
 					    headB.setNull();
 				        
-				        long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado para apagar a BinaryTree foi de "+ (end) +" milisegundos");
+				        long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado para apagar a BinaryTree foi de "+ (end) +" nanosegundos");
 				    }
 					else{
 					    System.out.println("Opção invalida!!");
@@ -285,10 +285,10 @@ public class Main {
 				    if(aux == 1){
 				        System.out.println("Qual o código da escola deseja Procurar? ");
 				        aux = sc.nextInt();
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 						busca = head.getAvl().search(aux);
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado para buscar na AVLTree foi de "+ (end) +" milisegundos");
+					    long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado para buscar na AVLTree foi de "+ (end) +" nanosegundos");
 					    if(busca!= null){
 					        System.out.println(busca.toString());
 					    }else{
@@ -298,10 +298,10 @@ public class Main {
 				    else if(aux == 2){
 				        System.out.println("Qual o código da escola deseja Procurar? ");
 				        aux = sc.nextInt();
-					    long start = System.currentTimeMillis();
+					    long start = System.nanoTime();
 					    busca = headB.getBT().search(aux);
-					    long end = System.currentTimeMillis()-start;
-					    System.out.println("o tempo usado para buscar na BinaryTree foi de "+ (end) +" milisegundos");
+					    long end = System.nanoTime()-start;
+					    System.out.println("o tempo usado para buscar na BinaryTree foi de "+ (end) +" nanosegundos");
 					    if(busca!= null){
 					        System.out.println(busca.toString());
 					    }else{
@@ -319,30 +319,30 @@ public class Main {
 					if (aux == 1) {
 						// Certifique-se de que head está corretamente configurado
 						if (head != null) {
-							long start = System.currentTimeMillis();
+							long start = System.nanoTime();
 							try {
 								AVLTree avlTree = new AVLTree();
 								avlTree.analise(head, "resultadoAVL.csv", "resultadoAVL.txt");
 							} catch (OutOfMemoryError e) {
 								System.out.println("Erro de memória: " + e.getMessage());
 							}
-							long end = System.currentTimeMillis() - start;
-							System.out.println("o tempo usado para analisar na AVLTree foi de " + end + " milisegundos");
+							long end = System.nanoTime() - start;
+							System.out.println("o tempo usado para analisar na AVLTree foi de " + end + " nanosegundos");
 						} else {
 							System.out.println("A lista ligada de AVLTree está vazia.");
 						}
 					} else if (aux == 2) {
 						// Certifique-se de que LLBTP está corretamente configurado
 						if (headB != null) {
-							long start = System.currentTimeMillis();
+							long start = System.nanoTime();
 							try {
 								BinaryTree BTree = new BinaryTree();
 								BTree.analise(headB, "resultadoBT.csv", "resultadoBT.txt");
 							} catch (OutOfMemoryError e) {
 								System.out.println("Erro de memória: " + e.getMessage());
 							}
-							long end = System.currentTimeMillis() - start;
-							System.out.println("o tempo usado para analisar na BinaryTree foi de " + end + " milisegundos");
+							long end = System.nanoTime() - start;
+							System.out.println("o tempo usado para analisar na BinaryTree foi de " + end + " nanosegundos");
 						} else {
 							System.out.println("A lista ligada de BinaryTree está vazia.");
 						}
