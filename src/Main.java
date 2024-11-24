@@ -289,7 +289,7 @@ public class Main {
 						busca = head.getAvl().search(aux);
 					    long end = System.nanoTime()-start;
 					    System.out.println("o tempo usado para buscar na AVLTree foi de "+ (end) +" nanosegundos");
-					    if(busca!= null){
+						if(busca!= null){
 					        System.out.println(busca.toString());
 					    }else{
 					        System.out.println("node não existente");
